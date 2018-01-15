@@ -45,10 +45,6 @@
         <li class=""><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Salir</span></a></li>
     </ul>
 </div>
-<div id="search">
-    <input type="text" placeholder="Search here..."/>
-    <button type="submit" class="tip-left" title="Search"><i class="icon-search icon-white"></i></button>
-</div>
 <!--close-top-Header-menu-->
 
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a><ul>
