@@ -11,7 +11,7 @@ define('DEFAULT_LAYOUT','default');
 define('BASE_URL','http://localhost:8080/greentech/');
 define('APP_NAME','GreenTech');
 define('APP_SLOGAN','by EpicaleSoft');
-define('APP_COMPANY','EpicaleSoft');
+define('APP_COMPANY','AG Management');
 define('COMPANY_TELEPHONE','+000 0000 - 0000');
 define('COMPANY_ADDRESS','N/A');
 define('COMPANY_MAIL','info@epicalesoft.com');

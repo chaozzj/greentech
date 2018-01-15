@@ -4,7 +4,7 @@
 </div>
 </div>
 <div class="row-fluid">
-    <div id="footer" class="span12"> 2018 &copy; <?php echo APP_NAME;?> <a href="<?php echo BASE_URL;?>"><?php echo COMPANY_NAME;?></a> </div>
+    <div id="footer" class="span12"> 2018 &copy; <?php echo APP_NAME;?> <a href="<?php echo BASE_URL;?>"><?php echo APP_COMPANY;?></a> </div>
 </div>
 <!--end footer -->
 
