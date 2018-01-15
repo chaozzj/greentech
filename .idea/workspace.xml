@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0981674-6989-4992-a714-b601c49be3ca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/views/layouts/default/header.php" afterPath="$PROJECT_DIR$/views/layouts/default/header.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,8 +46,8 @@
       <file leaf-file-name="header.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/layouts/default/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="88" column="18" lean-forward="false" selection-start-line="37" selection-start-column="63" selection-end-line="88" selection-end-column="18" />
+            <state relative-caret-position="374">
+              <caret line="76" column="136" lean-forward="false" selection-start-line="76" selection-start-column="136" selection-end-line="76" selection-end-column="136" />
               <folding>
                 <element signature="e#3447#3452#0#HTML" expanded="true" />
               </folding>
@@ -222,12 +221,12 @@
       <option name="presentableId" value="Default" />
       <updated>1515999683114</updated>
       <workItem from="1515999684421" duration="599000" />
-      <workItem from="1516033827270" duration="11205000" />
+      <workItem from="1516033827270" duration="11294000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11804000" />
+    <option name="totallyTimeSpent" value="11893000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -396,8 +395,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/layouts/default/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="88" column="18" lean-forward="false" selection-start-line="37" selection-start-column="63" selection-end-line="88" selection-end-column="18" />
+        <state relative-caret-position="374">
+          <caret line="76" column="136" lean-forward="false" selection-start-line="76" selection-start-column="136" selection-end-line="76" selection-end-column="136" />
           <folding>
             <element signature="e#3447#3452#0#HTML" expanded="true" />
           </folding>
