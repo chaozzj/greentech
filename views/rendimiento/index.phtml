@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon"><i class="icon-th"></i></span>
+                    <h5>Rendimiento de las cosechadoras</h5>
+                    <div class="buttons"><a href="<?php echo BASE_URL?>rendimiento/nuevo" class="btn btn-mini btn-success"><i class="icon-plus"></i> Añadir</a></div>
+                </div>
+                <?php if(isset($this->rendimientos)&& count($this->rendimientos)):?>
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered data-table">
+                        <thead>
+                        <tr>
+                            <th>Dia</th>
+                            <th>Cosechando</th>
+                            <th>Girando</th>
+                            <th>Volquete</th>
+                            <th>Transporte</th>
+                            <th>Reparacion</th>
+                            <th>Revisión</th>
+                            <th>Distraído</th>
+                            <th>Otro</th>
+                            <th>Fecha</th>
+                        </tr>
+                        </thead>
+                        <?php for($i=0;$i<count($this->rendimientos);$i++):?>
+                        <tbody>
+                        <tr class="gradeX">
+                            <td><?php echo $this->rendimientos[$i]['dia'];?></td>
+                            <td><?php echo $this->rendimientos[$i]['cosechando'];?></td>
+                            <td class="center"><?php echo $this->rendimientos[$i]['girando'];?></td>
+                            <td class="center"><?php echo $this->rendimientos[$i]['volquete'];?></td>
+                            <td class="center"><?php echo $this->rendimientos[$i]['transporte'];?></td>
+                            <td class="center"><?php echo $this->rendimientos[$i]['reparacion'];?></td>
+                            <td class="center"><?php echo $this->rendimientos[$i]['revision'];?></td>
+                            <td class="center"><?php echo $this->rendimientos[$i]['distraido'];?>  </td>
+                            <td class="center"><?php echo $this->rendimientos[$i]['otro'];?>  </td>
+                            <td><?php echo $this->rendimientos[$i]['fecha'];?></td>
+                        </tr>
+                        </tbody>
+                        <?php endfor;?>
+                    </table>
+                    <?php else:?>
+                        <h5>No hay datos para mostrar.</h5>
+                    <?php endif;?>
+                </div>
+            </div>
+        </div>
+    </div>
