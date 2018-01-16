@@ -13,37 +13,46 @@ class materiaModel extends Model {
     }
 
     public function getMaterias(){
-        $post = $this->_db->query("SELECT dia,c.nombre AS maquina_nombre, d.nombres AS operador_nombre, e.nombre AS turno_nombre, b.nombre AS finca_nombre,
-f.nombre AS variedad_nombre, A.cepa, A.tierra,A.cogollo,A.verdes,A.secas
-FROM materia A
-INNER JOIN fincas B ON B.id= A.finca
-inner JOIN maquina C on C.id= A.maquina
-INNER JOIN operadores D ON d.int = A.operador
-inner JOIN turno E ON E.id= A.turno
-INNER JOIN variedad F ON F.id= a.variedad");
+        $post = $this->_db->query("SELECT dia,maquina.nombre AS maquina_nombre, operadores.nombres AS operador_nombre, fincas.nombre AS finca_nombre,
+variedad.nombre AS variedad_nombre, materia.cepa, materia.tierra,materia.cogollo, materia.verdes,materia.secas
+FROM materia
+INNER JOIN fincas  ON fincas.id= materia.finca
+inner JOIN maquina on maquina.id= materia.maquina
+INNER JOIN operadores ON operadores.int = materia.operador
+INNER JOIN variedad ON variedad.id= materia.variedad");
         return $post->fetchAll();
-
-        /*$post = array(
-            'id'=>1,
-            'titulo'=> 'Test de post',
-            'contenido'=>'test test test'
-        );
-        return $post;*/
     }
 
-    public function insertarMateria($dia ,$cosechando ,$girando ,$volquete ,$transporte ,$reparacion ,$revision ,$distraido )
+    public function getMaquinas(){
+        $post = $this->_db->query("SELECT * FROM maquina");
+        return $post->fetchAll();
+    }
+    public function getFincas(){
+        $post = $this->_db->query("SELECT * FROM fincas");
+        return $post->fetchAll();
+    }
+    public function getOperadores(){
+        $post = $this->_db->query("SELECT * FROM operadores");
+        return $post->fetchAll();
+    }
+    public function getVariedades(){
+        $post = $this->_db->query("SELECT * FROM variedad");
+        return $post->fetchAll();
+    }
+    public function insertarMateria($dia ,$maquina ,$operador  ,$finca ,$variedad ,$cepa ,$tierra  ,$verdes ,$secas )
     {
-        $this->_db->prepare("INSERT INTO rendimiento (dia ,cosechando ,girando ,volquete ,transporte ,reparacion ,revision ,distraido ) 
-            VALUES(:dia,:cosechando,:girando,:volquete,:transporte,:reparacion,:revision,:distraido)")
+        $this->_db->prepare("INSERT INTO materia (dia ,maquina ,operador  ,finca ,variedad ,cepa ,tierra  ,verdes ,secas ) 
+            VALUES(:dia ,:maquina ,:operador ,:finca ,:variedad ,:cepa ,:tierra ,:verdes ,:secas)")
             ->execute(array(
                 ':dia'=>$dia,
-                ':cosechando'=>$cosechando,
-                ':girando'=>$girando,
-                ':volquete'=>$volquete,
-                ':transporte'=>$transporte,
-                ':reparacion'=>$reparacion,
-                ':revision'=>$revision,
-                ':distraido'=>$distraido
+                ':maquina'=>$maquina,
+                ':operador'=>$operador,
+                ':finca'=>$finca,
+                ':variedad'=>$variedad,
+                ':cepa'=>$cepa,
+                ':tierra'=>$tierra,
+                ':verdes'=>$verdes,
+                ':secas'=>$secas,
             ));
     }
 

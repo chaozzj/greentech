@@ -16,6 +16,7 @@ class materiaController extends Controller
 
     public function index(){
         $this->_view->materias= $this->_materias->getMaterias();
+
         $this->_view->titulo=APP_NAME;
         $this->_view->tagline=APP_SLOGAN;
         $this->_view->company='Materia Extraña';
@@ -26,6 +27,10 @@ class materiaController extends Controller
         $this->_view->setJs(array('nuevo'));
 
         $this->_view->titulo="Agregar Materia Extraña";
+        $this->_view->maquinas = $this->_materias->getMaquinas();
+        $this->_view->operador = $this->_materias->getOperadores();
+        $this->_view->fincas = $this->_materias->getFincas();
+        $this->_view->variedad = $this->_materias->getVariedades();
         $this->_view->tagline=APP_SLOGAN;
         $this->_view->company=APP_COMPANY;
         if($this->getInt('guardar')==1)
@@ -37,61 +42,43 @@ class materiaController extends Controller
                 $this->_view->renderizar('nuevo','materia');
                 exit;
             }
-            if(!$this->getInt('mCosechado'))
+
+            if(!$this->getDec('mCepa'))
             {
-                $this->_view->_error='Cosechando es obligatorio.';
+                $this->_view->_error='Cepa es obligatorio.';
                 $this->_view->renderizar('nuevo','materia');
                 exit;
             }
-            if(!$this->getInt('mGirando'))
+            if(!$this->getDec('mTierra'))
             {
-                $this->_view->_error='Girando es obligatorio';
+                $this->_view->_error='Tierra es obligatorio';
                 $this->_view->renderizar('nuevo','materia');
                 exit;
             }
-            if(!$this->getInt('mVolquete'))
+            if(!$this->getDec('mHojas'))
             {
-                $this->_view->_error='Sin Volquete es obligatorio';
+                $this->_view->_error='Hojas es obligatorio';
                 $this->_view->renderizar('nuevo','materia');
                 exit;
             }
 
-            if(!$this->getInt('mTransporte'))
+            if(!$this->getDec('mRaices'))
             {
-                $this->_view->_error='Transporte es obligatorio';
+                $this->_view->_error='Raices es obligatorio';
                 $this->_view->renderizar('nuevo','materia');
                 exit;
             }
 
-            if(!$this->getInt('mReparacion'))
-            {
-                $this->_view->_error='Reparación es obligatorio';
-                $this->_view->renderizar('nuevo','materia');
-                exit;
-            }
-
-            if(!$this->getInt('mRevision'))
-            {
-                $this->_view->_error='Revisión es obligatorio';
-                $this->_view->renderizar('nuevo','materia');
-                exit;
-            }
-
-            if(!$this->getInt('mDistraido'))
-            {
-                $this->_view->_error='Distraido es obligatorio';
-                $this->_view->renderizar('nuevo','materia');
-                exit;
-            }
             $this->_materias->insertarMateria(
                 $this->getInt('mDia'),
-                $this->getInt('mCosechado'),
-                $this->getInt('mGirando'),
-                $this->getInt('mVolquete'),
-                $this->getInt('mTransporte'),
-                $this->getInt('mReparacion'),
-                $this->getInt('mRevision'),
-                $this->getInt('mDistraido')
+                $this->getInt('mMaquina'),
+                $this->getInt('mOperador'),
+                $this->getInt('mFinca'),
+                $this->getInt('mVariedad'),
+                $this->getDec('mCepa'),
+                $this->getDec('mTierra'),
+                $this->getDec('mHojas'),
+                $this->getDec('mRaices')
             );
 
             $this->_view->renderizar('nuevo','materia');

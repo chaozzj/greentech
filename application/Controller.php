@@ -62,6 +62,15 @@ abstract class Controller
         }
         return 0;
     }
+    protected function getDec($valor)
+    {
+        if(isset($_POST[$valor])&&!empty($_POST[$valor]))
+        {
+            $_POST[$valor]=filter_input(INPUT_POST,$valor,FILTER_VALIDATE_FLOAT);
+            return $_POST[$valor];
+        }
+        return 0;
+    }
     /*Funciones por metodo GET*/
     protected  function filtrarInt($int)
     {
