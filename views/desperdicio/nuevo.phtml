@@ -1,4 +1,6 @@
-<div class="span6">
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span6">
     <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
             <h5>Form Elements</h5>
@@ -9,7 +11,7 @@
                 <div class="control-group">
                       <label class="control-label">Día</label>
                               <div class="controls">
-                        <select id="mDia" name="mDia">
+                        <select id="mDia" name="mDia" value="<?php if (isset($this->datos['mDia'])) echo $this->datos['mDia']; ?>">
                             <?php for($i=1;$i<126;$i++):?>
                                 <option><?php echo $i;?></option>
                             <?php endfor;?>
@@ -19,7 +21,7 @@
                 <div class="control-group">
                     <label class="control-label">Máquina</label>
                          <div class="controls">
-                          <select id="mMaquina" name="mMaquina">
+                          <select id="mMaquina" name="mMaquina" value="<?php if (isset($this->datos['mMaquina'])) echo $this->datos['mMaquina']; ?>">
                             <option>36 C 3500 Llanta<option/>
                             <option>37 C3510 Oruga<option/>
                             <option>38 JD 3520 Oruga<option/>
@@ -39,7 +41,7 @@
                 <div class="control-group">
                     <label class="control-label">Operador</label>
                     <div class="controls">
-                        <select id="mOperador" name="mOperador">
+                        <select id="mOperador" name="mOperador" value="<?php if (isset($this->datos['mOperador'])) echo $this->datos['mOperador']; ?>">
                             <option>Alberto Cortes</option>
                             <option>Alonso Gomez</option>
                             <option>Alvaro Cerdas</option>
@@ -71,7 +73,7 @@
                 <div class="control-group">
                     <label class="control-label">Turno</label>
                     <div class="controls">
-                        <select id="mTurno" name="mTurno">
+                        <select id="mTurno" name="mTurno" value="<?php if (isset($this->datos['mTurno'])) echo $this->datos['mTurno']; ?>">
                             <?php for($i=1;$i<5;$i++):?>
                                 <option><?php echo $i;?></option>
                             <?php endfor;?>
@@ -81,7 +83,7 @@
                 <div class="control-group">
                     <label class="control-label">Finca</label>
                     <div class="controls">
-                        <select id="mFinca" name="mFinca">
+                        <select id="mFinca" name="mFinca" value="<?php if (isset($this->datos['mFinca'])) echo $this->datos['mFinca']; ?>">
                             <option>Bambu </option>
                             <option>Bambuzal</option>
                             <option>Basurero</option>
@@ -142,7 +144,7 @@
                 <div class="control-group">
                     <label class="control-label">Variedad</label>
                     <div class="controls">
-                        <select id="mVariedad" name="mVariedad">
+                        <select id="mVariedad" name="mVariedad" value="<?php if (isset($this->datos['mVariedad'])) echo $this->datos['mVariedad']; ?>">
                             <option>B82-333<option/>
                             <option>CP14-1586<option/>
                             <option>CP72-1210<option/>
@@ -197,8 +199,11 @@
                 <div class="form-actions">
                     <button type="submit" class="btn btn-success">Ingresar Datos</button>
                     <button type="button" class="btn btn-danger">Cancelar</button>
+                </div>
             </form>
         </div>
+    </div>
+</div>
     </div>
 </div>
 

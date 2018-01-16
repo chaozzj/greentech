@@ -75,10 +75,10 @@ class desperdicioController extends Controller
             }
             $this->_usuarios->insertarDesperdicio(
                 $this->getInt('mDia'),
-                $this->getTexto('mMaquina'),
-                $this->getTexto('mOperador'),
+                $this->getInt('mMaquina'),
+                $this->getInt('mOperador'),
                 $this->getInt('mTurno'),
-                $this->getTexto('mFinca'),
+                $this->getInt('mFinca'),
                 $this->getInt('mVariedad'),
                 $this->getInt('mCañaL'),
                 $this->getInt('mCañaPic'),
