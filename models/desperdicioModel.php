@@ -21,15 +21,24 @@ inner JOIN maquina on maquina.id= captura.maquina
 INNER JOIN operadores ON operadores.int = captura.operador
 INNER JOIN variedad ON variedad.id= captura.variedad");
         return $post->fetchAll();
-
-        /*$post = array(
-            'id'=>1,
-            'titulo'=> 'Test de post',
-            'contenido'=>'test test test'
-        );
-        return $post;*/
     }
 
+    public function getMaquinas(){
+        $post = $this->_db->query("SELECT * FROM maquina");
+        return $post->fetchAll();
+    }
+    public function getFincas(){
+        $post = $this->_db->query("SELECT * FROM fincas");
+        return $post->fetchAll();
+    }
+    public function getOperadores(){
+        $post = $this->_db->query("SELECT * FROM operadores");
+        return $post->fetchAll();
+    }
+    public function getVariedades(){
+        $post = $this->_db->query("SELECT * FROM variedad");
+        return $post->fetchAll();
+    }
     public function insertarDesperdicio($dia ,$maquina ,$operador ,$turno ,$finca ,$variedad ,$tocones ,$cana_larga, $cana_picada, $puntas, $rendimiento)
     {
         $this->_db->prepare("INSERT INTO captura (dia ,maquina ,operador ,turno ,finca ,variedad ,tocones ,cana_larga, cana_picada, puntas, rendimiento ) 
@@ -45,7 +54,7 @@ INNER JOIN variedad ON variedad.id= captura.variedad");
                 ':cana_larga'=>$cana_larga,
                 ':cana_picada'=>$cana_picada,
                 ':puntas'=>$puntas,
-                  ':rendimiento'=>$rendimiento
+                ':rendimiento'=>$rendimiento
             ));
     }
 
