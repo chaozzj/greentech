@@ -32,43 +32,43 @@ class rendimientoController extends Controller
         {
             $this->_view->datos=$_POST;
             if(!$this->getInt('mDia'))
-                {
-                    $this->_view->_error='Registre un dia válido';
-                    $this->_view->renderizar('nuevo','rendimiento');
-                    exit;
-                }
+            {
+                $this->_view->_error='Registre un dia válido';
+                $this->_view->renderizar('nuevo','rendimiento');
+                exit;
+            }
             if(!$this->getInt('mCosechado'))
-                {
-                    $this->_view->_error='Cosechando es obligatorio.';
-                    $this->_view->renderizar('nuevo','rendimiento');
-                    exit;
-                }
+            {
+                $this->_view->_error='Cosechando es obligatorio.';
+                $this->_view->renderizar('nuevo','rendimiento');
+                exit;
+            }
             if(!$this->getInt('mGirando'))
-                {
-                    $this->_view->_error='Girando es obligatorio.';
-                    $this->_view->renderizar('nuevo','rendimiento');
-                    exit;
-                }
+            {
+                $this->_view->_error='Girando es obligatorio';
+                $this->_view->renderizar('nuevo','rendimiento');
+                exit;
+            }
             if(!$this->getInt('mVolquete'))
-                {
-                    $this->_view->_error='Sin Volquete es obligatorio';
-                    $this->_view->renderizar('nuevo','rendimiento');
-                    exit;
-                }
+            {
+                $this->_view->_error='Sin Volquete es obligatorio';
+                $this->_view->renderizar('nuevo','rendimiento');
+                exit;
+            }
 
             if(!$this->getInt('mTransporte'))
             {
-                    $this->_view->_error='Transporte es obligatorio';
-                    $this->_view->renderizar('nuevo','rendimiento');
-                    exit;
-                }
+                $this->_view->_error='Transporte es obligatorio';
+                $this->_view->renderizar('nuevo','rendimiento');
+                exit;
+            }
 
             if(!$this->getInt('mReparacion'))
             {
-                    $this->_view->_error='Reparación es obligatorio';
-                    $this->_view->renderizar('nuevo','rendimiento');
-                    exit;
-                }
+                $this->_view->_error='Reparación es obligatorio';
+                $this->_view->renderizar('nuevo','rendimiento');
+                exit;
+            }
 
             if(!$this->getInt('mRevision'))
             {
@@ -94,8 +94,8 @@ class rendimientoController extends Controller
                 $this->getInt('mDistraido')
             );
 
+            $this->redireccionar('rendimiento');
+        }
         $this->_view->renderizar('nuevo','rendimiento');
-
-    }
     }
 }
