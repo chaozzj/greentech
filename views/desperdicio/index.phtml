@@ -29,19 +29,16 @@
                             <tbody>
                             <tr class="gradeX">
                                 <td><?php echo $this->desperdicio[$i]['dia'];?></td>
-                                <td><?php echo $this->desperdicio[$i]['maquina'];?></td>
-                                <td class="center"><?php echo $this->desperdicio[$i]['operador'];?></td>
+                                <td><?php echo $this->desperdicio[$i]['maquina_nombre'];?></td>
+                                <td class="center"><?php echo $this->desperdicio[$i]['operador_nombre'];?></td>
                                 <td class="center"><?php echo $this->desperdicio[$i]['turno'];?></td>
-                                <td class="center"><?php echo $this->desperdicio[$i]['finca'];?></td>
-                                <td class="center"><?php echo $this->desperdicio[$i]['variedad'];?></td>
+                                <td class="center"><?php echo $this->desperdicio[$i]['finca_nombre'];?></td>
+                                <td class="center"><?php echo $this->desperdicio[$i]['variedad_nombre'];?></td>
                                 <td class="center"><?php echo $this->desperdicio[$i]['tocones'];?></td>
                                 <td class="center"><?php echo $this->desperdicio[$i]['cana_larga'];?>  </td>
                                 <td class="center"><?php echo $this->desperdicio[$i]['cana_picada'];?>  </td>
                                 <td class="center"><?php echo $this->desperdicio[$i]['puntas'];?>  </td>
                                 <td class="center"><?php echo $this->desperdicio[$i]['rendimiento'];?>  </td>
-
-
-                                <td><?php echo $this->desperdicio[$i]['fecha'];?></td>
                             </tr>
                             </tbody>
                         <?php endfor;?>

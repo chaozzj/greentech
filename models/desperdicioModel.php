@@ -13,7 +13,13 @@ class desperdicioModel extends Model {
     }
 
     public function getdesperdicio(){
-        $post = $this ->_db->query("SELECT * FROM captura");
+        $post = $this ->_db->query("SELECT dia,turno,maquina.nombre AS maquina_nombre, operadores.nombres AS operador_nombre, fincas.nombre AS finca_nombre,
+variedad.nombre AS variedad_nombre, captura.tocones, captura.cana_larga,captura.cana_picada,captura.puntas,captura.rendimiento
+FROM captura
+INNER JOIN fincas  ON fincas.id= captura.finca
+inner JOIN maquina on maquina.id= captura.maquina
+INNER JOIN operadores ON operadores.int = captura.operador
+INNER JOIN variedad ON variedad.id= captura.variedad");
         return $post->fetchAll();
 
         /*$post = array(
