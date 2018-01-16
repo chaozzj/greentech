@@ -6,12 +6,12 @@
             <h5>Form Elements</h5>
         </div>
         <div class="widget-content nopadding">
-            <form action="#" method="get" class="form-horizontal">
+            <form id="frmAddCaptura" class="form-horizontal" method="post"  action="<?php echo BASE_URL?>desperdicio/nuevo">
                 <input type="hidden"name="guardar" value="1"/>
                 <div class="control-group">
                       <label class="control-label">Día</label>
                               <div class="controls">
-                        <select id="mDia" name="mDia" value="<?php if (isset($this->datos['mDia'])) echo $this->datos['mDia']; ?>">
+                        <select id="mDia" name="mDia">
                             <?php for($i=1;$i<126;$i++):?>
                                 <option><?php echo $i;?></option>
                             <?php endfor;?>
@@ -21,61 +21,33 @@
                 <div class="control-group">
                     <label class="control-label">Máquina</label>
                          <div class="controls">
-                          <select id="mMaquina" name="mMaquina" value="<?php if (isset($this->datos['mMaquina'])) echo $this->datos['mMaquina']; ?>">
-                            <option>36 C 3500 Llanta<option/>
-                            <option>37 C3510 Oruga<option/>
-                            <option>38 JD 3520 Oruga<option/>
-                            <option>39 C3500 Llanta<option/>
-                            <option>40 JD3510 Llanta<option/>
-                            <option>41 C 3510 Llanta<option/>
-                            <option<42 C 3500 Llanta<option/>
-                            <option>43 JD 3520 Oruga<option/>
-                            <option>44 JD 3520 Oruga<option/>
-                            <option>45 JD 3510 Oruga<option/>
-                            <option>46 JD 3520 Llanta<option/>
-                            <option>Corta Manual<option/>
-
-                        </select>
+                             <select id="mMaquina" name="mMaquina">
+                                 <?php if(isset($this->maquinas)&& count($this->maquinas)):?>
+                                     <?php for($i=0;$i<count($this->maquinas);$i++):?>
+                                         <option  value="<?php echo $this->maquinas[$i]['id'];?>"><?php echo $this->maquinas[$i]['nombre'];?></option>
+                                     <?php endfor;?>
+                                 <?php endif;?>
+                             </select>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Operador</label>
                     <div class="controls">
-                        <select id="mOperador" name="mOperador" value="<?php if (isset($this->datos['mOperador'])) echo $this->datos['mOperador']; ?>">
-                            <option>Alberto Cortes</option>
-                            <option>Alonso Gomez</option>
-                            <option>Alvaro Cerdas</option>
-                            <option>Ariel Carvajal</option>
-                            <option>Bryan Calderon</option>
-                            <option>Carlos Barrantes</option>
-                            <option>César Obando </option>
-                            <option>Cristhian Obando</option>
-                            <option>Eladio Prieto</option>
-                            <option>Eric Sequeira</option>
-                            <option>Gerardo Carmona</option>
-                            <option>Guillermo Aguirre</option>
-                            <option>Gustavo Marchena</option>
-                            <option>Hector Lopez</option>
-                            <option>Jorge Cascante</option>
-                            <option>Juan Carlos Vargas</option>
-                            <option>Leonardo Miranda</option>
-                            <option>Mario Miranda</option>
-                            <option>Norberto Cerrano</option>
-                            <option>Oscar Chavarria</option>
-                            <option>Rafael Alvarez</option>
-                            <option>Tony Rodriguez</option>
-                            <option>Operador 1 </option>
-                            <option>Operador 2</option>
-
+                        <select id="mOperador" name="mOperador">
+                            <?php if(isset($this->operador)&& count($this->operador)):?>
+                                <?php for($i=0;$i<count($this->operador);$i++):?>
+                                    <option  value="<?php echo $this->operador[$i]['int'];?>"><?php echo $this->operador[$i]['nombres'];?></option>
+                                <?php endfor;?>
+                            <?php endif;?>
                         </select>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Turno</label>
                     <div class="controls">
-                        <select id="mTurno" name="mTurno" value="<?php if (isset($this->datos['mTurno'])) echo $this->datos['mTurno']; ?>">
-                            <?php for($i=1;$i<5;$i++):?>
-                                <option><?php echo $i;?></option>
+                        <select id="mTurno" name="mTurno">
+                            <?php for($i=1;$i<6;$i++):?>
+                                <option value="<?php echo $i;?> "><?php echo $i;?></option>
                             <?php endfor;?>
                         </select>
                     </div>
@@ -83,119 +55,61 @@
                 <div class="control-group">
                     <label class="control-label">Finca</label>
                     <div class="controls">
-                        <select id="mFinca" name="mFinca" value="<?php if (isset($this->datos['mFinca'])) echo $this->datos['mFinca']; ?>">
-                            <option>Bambu </option>
-                            <option>Bambuzal</option>
-                            <option>Basurero</option>
-                            <option>Carrizal</option>
-                            <option>Casa Amarilla</option>
-                            <option>Chomes</option>
-                            <option>Delicias</option>
-                            <option>El Cambio</option>
-                            <option>El Carao</option>
-                            <option>El Cinco</option>
-                            <option>El Cocal</option>
-                            <option>El Dinarte</option>
-                            <option>El Escondido</option>
-                            <option>El Espabel</option>
-                            <option>El Galeron</option>
-                            <option>El Molino</option>
-                            <option>El Paraiso</option>
-                            <option>El Sueño</option>
-                            <option>El Uno</option>
-                            <option>Embarcadero</option>
-                            <option>Encanto</option>
-                            <option>La Flor</option>
-                            <option>La Gloria</option>
-                            <option>La Gloria</option>
-                            <option>La Grama</option>
-                            <option>La Laguna</option>
-                            <option>La Montaña</option>
-                            <option>La Papaya</option>
-                            <option>La Pineda</option>
-                            <option>La Pineda</option>
-                            <option>La Zoila</option>
-                            <option>Lagunilla</option>
-                            <option>Las Manzanas</option>
-                            <option>Las Traistezas</option>
-                            <option>Laurelar</option>
-                            <option>Los Coyotes</option>
-                            <option>Los Negros</option>
-                            <option>Matamoros</option>
-                            <option>MM Centro</option>
-                            <option>MM Vivero</option>
-                            <option>Naranjito</option>
-                            <option>Palermo</option>
-                            <option>Palermo</option>
-                            <option>Pitahaya</option>
-                            <option>Pta Plancha</option>
-                            <option>Potrerito</option>
-                            <option>San Francisco</option>
-                            <option>Santa Emilia</option>
-                            <option>Sardinal</option>
-                            <option>Sardinal</option>
-                            <option>Tronconal</option>
-                            <option>Yoyo</option>
-                            <option>ZonaFranca</option>
-
+                        <select id="mFinca" name="mFinca">
+                            <?php if(isset($this->fincas)&& count($this->fincas)):?>
+                                <?php for($i=0;$i<count($this->fincas);$i++):?>
+                                    <option  value="<?php echo $this->fincas[$i]['id'];?>"><?php echo $this->fincas[$i]['nombre'];?></option>
+                                <?php endfor;?>
+                            <?php endif;?>
                         </select>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Variedad</label>
                     <div class="controls">
-                        <select id="mVariedad" name="mVariedad" value="<?php if (isset($this->datos['mVariedad'])) echo $this->datos['mVariedad']; ?>">
-                            <option>B82-333<option/>
-                            <option>CP14-1586<option/>
-                            <option>CP72-1210<option/>
-                            <option>CP72-2086<option/>
-                            <option>CP80-1743<option/>
-                            <option>Laica07-309<option/>
-                            <option>Laica01-307<option/>
-                            <option>RB86-7515<option/>
-                            <option>SP81-3250<option/>
-                            <option>Varias<option/>
-
+                        <select id="mFinca" name="mVariedad">
+                            <?php if(isset($this->variedad)&& count($this->variedad)):?>
+                                <?php for($i=0;$i<count($this->variedad);$i++):?>
+                                    <option  value="<?php echo $this->variedad[$i]['id'];?>"><?php echo $this->variedad[$i]['nombre'];?></option>
+                                <?php endfor;?>
+                            <?php endif;?>
                         </select>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Tocones</label>
                     <div class="controls">
-                        <input type="text" name="mTocones" value="<?php if (isset($this->datos['mTocones'])) echo $this->datos['mTocones']; ?>" onKeyPress="if (event.keyCode < 46 || event.keyCode > 57 )event.returnValue = false;"/>
+                        <input type="number" min="0" step="0.01"name="mTocones" value="<?php if (isset($this->datos['mTocones'])) echo $this->datos['mTocones']; ?>"/>
 
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Caña Larga</label>
                     <div class="controls">
-                        <input type="text" name="mCañaL" value="<?php if (isset($this->datos['mCañal'])) echo $this->datos['mCañal']; ?>" onKeyPress="if (event.keyCode < 46 || event.keyCode > 57 )event.returnValue = false;"/>
+                        <input type="number" min="0" step="0.01" name="mCañaL" value="<?php if (isset($this->datos['mCañal'])) echo $this->datos['mCañal']; ?>"/>
 
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Caña Picada</label>
                     <div class="controls">
-                        <input type="text" name="mCañaPic" value="<?php if (isset($this->datos['mCañaPic'])) echo $this->datos['mCañaPic']; ?>" onKeyPress="if (event.keyCode < 46 || event.keyCode > 57 )event.returnValue = false;"/>
+                        <input type="number" min="0" step="0.01" name="mCañaPic" value="<?php if (isset($this->datos['mCañaPic'])) echo $this->datos['mCañaPic']; ?>"/>
 
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Puntas</label>
                     <div class="controls">
-                        <input type="text" name="mPuntas" value="<?php if (isset($this->datos['mPuntas'])) echo $this->datos['mPuntas']; ?>" onKeyPress="if (event.keyCode < 46 || event.keyCode > 57 )event.returnValue = false;"/>
+                        <input type="number" min="0" step="0.01" name="mPuntas" value="<?php if (isset($this->datos['mPuntas'])) echo $this->datos['mPuntas']; ?>"/>
 
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Rendimiento</label>
                     <div class="controls">
-
-                        <input type="text" name="mRendimiento" value="<?php if (isset($this->datos['mRendimiento'])) echo $this->datos['mRendimiento']; ?>" onKeyPress="if (event.keyCode < 46 || event.keyCode > 57 )event.returnValue = false;"/>
+                        <input type="number" min="0" step="0.01" name="mRendimiento" value="<?php if (isset($this->datos['mRendimiento'])) echo $this->datos['mRendimiento']; ?>"/>
                     </div>
                 </div>
-
-
                 <div class="form-actions">
                     <button type="submit" class="btn btn-success">Ingresar Datos</button>
                     <button type="button" class="btn btn-danger">Cancelar</button>

@@ -12,7 +12,7 @@ class desperdicioModel extends Model {
         parent::__construct();
     }
 
-    public function getdesperdicio(){
+    public function getDesperdicio(){
         $post = $this ->_db->query("SELECT dia,turno,maquina.nombre AS maquina_nombre, operadores.nombres AS operador_nombre, fincas.nombre AS finca_nombre,
 variedad.nombre AS variedad_nombre, captura.tocones, captura.cana_larga,captura.cana_picada,captura.puntas,captura.rendimiento
 FROM captura
@@ -41,8 +41,8 @@ INNER JOIN variedad ON variedad.id= captura.variedad");
     }
     public function insertarDesperdicio($dia ,$maquina ,$operador ,$turno ,$finca ,$variedad ,$tocones ,$cana_larga, $cana_picada, $puntas, $rendimiento)
     {
-        $this->_db->prepare("INSERT INTO captura (dia ,maquina ,operador ,turno ,finca ,variedad ,tocones ,cana_larga, cana_picada, puntas, rendimiento ) 
-            VALUES(:dia,:maquina,:turno,:finca,:variedad,:tocones,:cana_larga,:cana_picada,:puntas,:rendiemiento)")
+        $this->_db->prepare("INSERT INTO captura (dia ,maquina ,operador ,turno ,finca ,variedad ,tocones ,cana_larga ,cana_picada ,puntas ,rendimiento ) 
+            VALUES(:dia ,:maquina ,:operador ,:turno ,:finca ,:variedad ,:tocones ,:cana_larga ,:cana_picada ,:puntas ,rendimiento)")
             ->execute(array(
                 ':dia'=>$dia,
                 ':maquina'=>$maquina,
@@ -57,9 +57,6 @@ INNER JOIN variedad ON variedad.id= captura.variedad");
                 ':rendimiento'=>$rendimiento
             ));
     }
-
-
-
     public function getPostID($id)
     {
         $id=(int)$id;

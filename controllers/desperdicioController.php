@@ -18,7 +18,7 @@ class desperdicioController extends Controller
 
     public function index()
     {
-        $this->_view->desperdicio = $this->_desperdicio->getdesperdicio();
+        $this->_view->desperdicio = $this->_desperdicio->getDesperdicio();
         $this->_view->titulo = APP_NAME;
         $this->_view->tagline = APP_SLOGAN;
         $this->_view->company = 'Desperdicio';
@@ -30,6 +30,10 @@ class desperdicioController extends Controller
         $this->_view->setJs(array('nuevo'));
 
         $this->_view->titulo="Agregar Desperdicio";
+        $this->_view->maquinas = $this->_desperdicio->getMaquinas();
+        $this->_view->operador = $this->_desperdicio->getOperadores();
+        $this->_view->fincas = $this->_desperdicio->getFincas();
+        $this->_view->variedad = $this->_desperdicio->getVariedades();
         $this->_view->tagline=APP_SLOGAN;
         $this->_view->company=APP_COMPANY;
         if($this->getInt('guardar')==1)
@@ -41,49 +45,50 @@ class desperdicioController extends Controller
                 $this->_view->renderizar('nuevo','desperdicio');
                 exit;
             }
-            if(!$this->getInt('mTocones'))
+            if(!$this->getDec('mTocones'))
             {
                 $this->_view->_error='Toccones es obligatorio.';
                 $this->_view->renderizar('nuevo','desperdicio');
                 exit;
             }
-            if(!$this->getInt('mCañaL'))
+            if(!$this->getDec('mCañaL'))
             {
                 $this->_view->_error='Caña Larga es obligatorio';
                 $this->_view->renderizar('nuevo','desperdicio');
                 exit;
             }
-            if(!$this->getInt('mCañaPic'))
+            if(!$this->getDec('mCañaPic'))
             {
                 $this->_view->_error='Caña Picada es obligatorio';
                 $this->_view->renderizar('nuevo','desperdicio');
                 exit;
             }
 
-            if(!$this->getInt('mPuntas'))
+            if(!$this->getDec('mPuntas'))
             {
                 $this->_view->_error='Puntas es obligatorio';
                 $this->_view->renderizar('nuevo','desperdicio');
                 exit;
             }
 
-            if(!$this->getInt('mRendimiento'))
+            if(!$this->getDec('mRendimiento'))
             {
                 $this->_view->_error='Rendimiento es obligatorio';
                 $this->_view->renderizar('nuevo','desperdicio');
                 exit;
             }
-            $this->_usuarios->insertarDesperdicio(
+            $this->_desperdicio->insertarDesperdicio(
                 $this->getInt('mDia'),
                 $this->getInt('mMaquina'),
                 $this->getInt('mOperador'),
                 $this->getInt('mTurno'),
                 $this->getInt('mFinca'),
                 $this->getInt('mVariedad'),
-                $this->getInt('mCañaL'),
-                $this->getInt('mCañaPic'),
-                $this->getInt('mPuntas'),
-                $this->getInt('mRendimiento')
+                $this->getDec('mTocones'),
+                $this->getDec('mCañaL'),
+                $this->getDec('mCañaPic'),
+                $this->getDec('mPuntas'),
+                $this->getDec('mRendimiento')
             );
 
             $this->redireccionar('desperdicio');
