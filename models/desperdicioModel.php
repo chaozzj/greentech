@@ -13,8 +13,7 @@ class desperdicioModel extends Model {
     }
 
     public function getdesperdicio(){
-        //$post = $this->_db->query("SELECT * FROM ");
-        $post = $this ->_db->query("SELECT * FROM operadores");
+        $post = $this ->_db->query("SELECT * FROM captura");
         return $post->fetchAll();
 
         /*$post = array(
@@ -25,10 +24,31 @@ class desperdicioModel extends Model {
         return $post;*/
     }
 
+    public function insertarDesperdicio($dia ,$maquina ,$operador ,$turno ,$finca ,$variedad ,$tocones ,$cana_larga, $cana_picada, $puntas, $rendimiento)
+    {
+        $this->_db->prepare("INSERT INTO captura (dia ,maquina ,operador ,turno ,finca ,variedad ,tocones ,cana_larga, cana_picada, puntas, rendimiento ) 
+            VALUES(:dia,:maquina,:turno,:finca,:variedad,:tocones,:cana_larga,:cana_picada,:puntas,:rendiemiento)")
+            ->execute(array(
+                ':dia'=>$dia,
+                ':maquina'=>$maquina,
+                ':operador'=>$operador,
+                ':turno'=>$turno,
+                ':finca'=>$finca,
+                ':variedad'=>$variedad,
+                ':tocones'=>$tocones,
+                ':cana_larga'=>$cana_larga,
+                ':cana_picada'=>$cana_picada,
+                ':puntas'=>$puntas,
+                  ':rendimiento'=>$rendimiento
+            ));
+    }
+
+
+
     public function getPostID($id)
     {
         $id=(int)$id;
-        $post = $this->_db->query("SELECT * FROM rendimiento WHERE id_post =$id");
+        $post = $this->_db->query("SELECT * FROM captura WHERE id_post =$id");
         return $post->fetch();
     }
 }

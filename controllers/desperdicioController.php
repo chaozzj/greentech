@@ -29,63 +29,66 @@ class desperdicioController extends Controller
     public function nuevo(){
         $this->_view->setJs(array('nuevo'));
 
-        $this->_view->titulo="Agregar Rendimiento";
+        $this->_view->titulo="Agregar Desperdicio";
         $this->_view->tagline=APP_SLOGAN;
         $this->_view->company=APP_COMPANY;
         if($this->getInt('guardar')==1)
         {
             $this->_view->datos=$_POST;
-            if(!$this->getInt('Turno'))
+            if(!$this->getInt('mTurno'))
             {
-                $this->_view->_error='Registre un dia válido';
-                $this->_view->renderizar('nuevo','rendimiento');
+                $this->_view->_error='Registre un turno válido';
+                $this->_view->renderizar('nuevo','desperdicio');
                 exit;
             }
             if(!$this->getInt('mTocones'))
             {
                 $this->_view->_error='Toccones es obligatorio.';
-                $this->_view->renderizar('nuevo','rendimiento');
+                $this->_view->renderizar('nuevo','desperdicio');
                 exit;
             }
             if(!$this->getInt('mCañaL'))
             {
                 $this->_view->_error='Caña Larga es obligatorio';
-                $this->_view->renderizar('nuevo','rendimiento');
+                $this->_view->renderizar('nuevo','desperdicio');
                 exit;
             }
             if(!$this->getInt('mCañaPic'))
             {
                 $this->_view->_error='Caña Picada es obligatorio';
-                $this->_view->renderizar('nuevo','rendimiento');
+                $this->_view->renderizar('nuevo','desperdicio');
                 exit;
             }
 
             if(!$this->getInt('mPuntas'))
             {
                 $this->_view->_error='Puntas es obligatorio';
-                $this->_view->renderizar('nuevo','rendimiento');
+                $this->_view->renderizar('nuevo','desperdicio');
                 exit;
             }
 
             if(!$this->getInt('mRendimiento'))
             {
                 $this->_view->_error='Rendimiento es obligatorio';
-                $this->_view->renderizar('nuevo','rendimiento');
+                $this->_view->renderizar('nuevo','desperdicio');
                 exit;
             }
-            $this->_usuarios->insertarUsuario(
-                $this->getTexto('correo'),
-                $this->getTexto('pnombre'),
-                $this->getTexto('snombre'),
-                $this->getTexto('papellido'),
-                $this->getTexto('sapellido'),
-                $this->getInt('msexo'),
-                $this->getTexto('cedula')
+            $this->_usuarios->insertarDesperdicio(
+                $this->getInt('mDia'),
+                $this->getTexto('mMaquina'),
+                $this->getTexto('mOperador'),
+                $this->getInt('mTurno'),
+                $this->getTexto('mFinca'),
+                $this->getInt('mVariedad'),
+                $this->getInt('mCañaL'),
+                $this->getInt('mCañaPic'),
+                $this->getInt('mPuntas'),
+                $this->getInt('mRendimiento')
             );
 
-            $this->redireccionar('rendimiento');
+            $this->redireccionar('desperdicio');
         }
-        $this->_view->renderizar('nuevo','rendimiento');
-    
+        $this->_view->renderizar('nuevo','desperdicio');
+
     }
 }

@@ -4,39 +4,44 @@
             <div class="widget-box">
                 <div class="widget-title">
                     <span class="icon"><i class="icon-th"></i></span>
-                    <h5>Rendimiento de las cosechadoras</h5>
+                    <h5>Desperdicios de Caña</h5>
                     <div class="buttons"><a href="<?php echo BASE_URL?>desperdicio/nuevo" class="btn btn-mini btn-success"><i class="icon-plus"></i> Añadir</a></div>
                 </div>
-                <?php if(isset($this->rendimientos)&& count($this->rendimientos)):?>
+                <?php if(isset($this->desperdicio)&& count($this->desperdicio)):?>
                 <div class="widget-content nopadding">
                     <table class="table table-bordered data-table">
                         <thead>
                         <tr>
                             <th>Dia</th>
-                            <th>Cosechando</th>
-                            <th>Girando</th>
-                            <th>Volquete</th>
-                            <th>Transporte</th>
-                            <th>Reparacion</th>
-                            <th>Revisión</th>
-                            <th>Distraído</th>
-                            <th>Otro</th>
-                            <th>Fecha</th>
+                            <th>Máquina</th>
+                            <th>Operador</th>
+                            <th>Turno</th>
+                            <th>Finca</th>
+                            <th>Variedad</th>
+                            <th>Tocones</th>
+                            <th>Caña Larga</th>
+                            <th>Caña Picada</th>
+                            <th>Puntas</th>
+                            <th>Rendimiento</th>
                         </tr>
                         </thead>
-                        <?php for($i=0;$i<count($this->rendimientos);$i++):?>
+                        <?php for($i=0;$i<count($this->desperdicio);$i++):?>
                             <tbody>
                             <tr class="gradeX">
-                                <td><?php echo $this->rendimientos[$i]['dia'];?></td>
-                                <td><?php echo $this->rendimientos[$i]['cosechando'];?></td>
-                                <td class="center"><?php echo $this->rendimientos[$i]['girando'];?></td>
-                                <td class="center"><?php echo $this->rendimientos[$i]['volquete'];?></td>
-                                <td class="center"><?php echo $this->rendimientos[$i]['transporte'];?></td>
-                                <td class="center"><?php echo $this->rendimientos[$i]['reparacion'];?></td>
-                                <td class="center"><?php echo $this->rendimientos[$i]['revision'];?></td>
-                                <td class="center"><?php echo $this->rendimientos[$i]['distraido'];?>  </td>
-                                <td class="center"><?php echo $this->rendimientos[$i]['otro'];?>  </td>
-                                <td><?php echo $this->rendimientos[$i]['fecha'];?></td>
+                                <td><?php echo $this->desperdicio[$i]['dia'];?></td>
+                                <td><?php echo $this->desperdicio[$i]['maquina'];?></td>
+                                <td class="center"><?php echo $this->desperdicio[$i]['operador'];?></td>
+                                <td class="center"><?php echo $this->desperdicio[$i]['turno'];?></td>
+                                <td class="center"><?php echo $this->desperdicio[$i]['finca'];?></td>
+                                <td class="center"><?php echo $this->desperdicio[$i]['variedad'];?></td>
+                                <td class="center"><?php echo $this->desperdicio[$i]['tocones'];?></td>
+                                <td class="center"><?php echo $this->desperdicio[$i]['cana_larga'];?>  </td>
+                                <td class="center"><?php echo $this->desperdicio[$i]['cana_picada'];?>  </td>
+                                <td class="center"><?php echo $this->desperdicio[$i]['puntas'];?>  </td>
+                                <td class="center"><?php echo $this->desperdicio[$i]['rendimiento'];?>  </td>
+
+
+                                <td><?php echo $this->desperdicio[$i]['fecha'];?></td>
                             </tr>
                             </tbody>
                         <?php endfor;?>

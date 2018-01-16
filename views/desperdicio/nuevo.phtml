@@ -5,10 +5,11 @@
         </div>
         <div class="widget-content nopadding">
             <form action="#" method="get" class="form-horizontal">
+                <input type="hidden"name="guardar" value="1"/>
                 <div class="control-group">
-                    <label class="control-label">Día</label>
-                    <div class="controls">
-                        <select >
+                      <label class="control-label">Día</label>
+                              <div class="controls">
+                        <select id="mDia" name="mDia">
                             <?php for($i=1;$i<126;$i++):?>
                                 <option><?php echo $i;?></option>
                             <?php endfor;?>
@@ -17,8 +18,8 @@
                 </div>
                 <div class="control-group">
                     <label class="control-label">Máquina</label>
-                    <div class="controls">
-                        <select >
+                         <div class="controls">
+                          <select id="mMaquina" name="mMaquina">
                             <option>36 C 3500 Llanta<option/>
                             <option>37 C3510 Oruga<option/>
                             <option>38 JD 3520 Oruga<option/>
@@ -38,7 +39,7 @@
                 <div class="control-group">
                     <label class="control-label">Operador</label>
                     <div class="controls">
-                        <select >
+                        <select id="mOperador" name="mOperador">
                             <option>Alberto Cortes</option>
                             <option>Alonso Gomez</option>
                             <option>Alvaro Cerdas</option>
@@ -70,22 +71,17 @@
                 <div class="control-group">
                     <label class="control-label">Turno</label>
                     <div class="controls">
-                        <select >
-                            <option>First option</option>
-                            <option>Second option</option>
-                            <option>Third option</option>
-                            <option>Fourth option</option>
-                            <option>Fifth option</option>
-                            <option>Sixth option</option>
-                            <option>Seventh option</option>
-                            <option>Eighth option</option>
+                        <select id="mTurno" name="mTurno">
+                            <?php for($i=1;$i<5;$i++):?>
+                                <option><?php echo $i;?></option>
+                            <?php endfor;?>
                         </select>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Finca</label>
                     <div class="controls">
-                        <select >
+                        <select id="mFinca" name="mFinca">
                             <option>Bambu </option>
                             <option>Bambuzal</option>
                             <option>Basurero</option>
@@ -146,7 +142,7 @@
                 <div class="control-group">
                     <label class="control-label">Variedad</label>
                     <div class="controls">
-                        <select >
+                        <select id="mVariedad" name="mVariedad">
                             <option>B82-333<option/>
                             <option>CP14-1586<option/>
                             <option>CP72-1210<option/>
@@ -164,28 +160,28 @@
                 <div class="control-group">
                     <label class="control-label">Tocones</label>
                     <div class="controls">
-                        <input type="text" name="mTocones" onKeyPress="if (event.keyCode < 46 || event.keyCode > 57 )event.returnValue = false;"/>
+                        <input type="text" name="mTocones" value="<?php if (isset($this->datos['mTocones'])) echo $this->datos['mTocones']; ?>" onKeyPress="if (event.keyCode < 46 || event.keyCode > 57 )event.returnValue = false;"/>
 
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Caña Larga</label>
                     <div class="controls">
-                        <input type="text" name="mCañaL" onKeyPress="if (event.keyCode < 46 || event.keyCode > 57 )event.returnValue = false;"/>
+                        <input type="text" name="mCañaL" value="<?php if (isset($this->datos['mCañal'])) echo $this->datos['mCañal']; ?>" onKeyPress="if (event.keyCode < 46 || event.keyCode > 57 )event.returnValue = false;"/>
 
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Caña Picada</label>
                     <div class="controls">
-                        <input type="text" name="mCañaPic" onKeyPress="if (event.keyCode < 46 || event.keyCode > 57 )event.returnValue = false;"/>
+                        <input type="text" name="mCañaPic" value="<?php if (isset($this->datos['mCañaPic'])) echo $this->datos['mCañaPic']; ?>" onKeyPress="if (event.keyCode < 46 || event.keyCode > 57 )event.returnValue = false;"/>
 
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Puntas</label>
                     <div class="controls">
-                        <input type="text" name="mPuntas" onKeyPress="if (event.keyCode < 46 || event.keyCode > 57 )event.returnValue = false;"/>
+                        <input type="text" name="mPuntas" value="<?php if (isset($this->datos['mPuntas'])) echo $this->datos['mPuntas']; ?>" onKeyPress="if (event.keyCode < 46 || event.keyCode > 57 )event.returnValue = false;"/>
 
                     </div>
                 </div>
@@ -193,16 +189,14 @@
                     <label class="control-label">Rendimiento</label>
                     <div class="controls">
 
-                        <input type="text" name="mRendimiento" onKeyPress="if (event.keyCode < 46 || event.keyCode > 57 )event.returnValue = false;"/>
+                        <input type="text" name="mRendimiento" value="<?php if (isset($this->datos['mRendimiento'])) echo $this->datos['mRendimiento']; ?>" onKeyPress="if (event.keyCode < 46 || event.keyCode > 57 )event.returnValue = false;"/>
                     </div>
                 </div>
 
 
                 <div class="form-actions">
-                    <div class="buttons"><a href="<?php echo BASE_URL?>#" class="btn btn-mini btn-success"><i class="icon-plus"></i> Añadir</a></div>
-
-                    <!--button type="submit" class="btn btn-success">Save</button-->
-                </div>
+                    <button type="submit" class="btn btn-success">Ingresar Datos</button>
+                    <button type="button" class="btn btn-danger">Cancelar</button>
             </form>
         </div>
     </div>
