@@ -25,7 +25,9 @@ class rendimientoController extends Controller
     public function nuevo(){
         $this->_view->setJs(array('nuevo'));
 
-        $this->_view->titulo="Rendimiento";
+        $this->_view->titulo="Agregar Rendimiento";
+        $this->_view->tagline=APP_SLOGAN;
+        $this->_view->company=APP_COMPANY;
         if($this->getInt('guardar')==1)
         {
             $this->_view->datos=$_POST;
@@ -81,7 +83,7 @@ class rendimientoController extends Controller
                 $this->_view->renderizar('nuevo','rendimiento');
                 exit;
             }
-            $this->_usuarios->insertarRendimiento(
+            $this->_rendimientos->insertarRendimiento(
                 $this->getInt('mDia'),
                 $this->getInt('mCosechado'),
                 $this->getInt('mGirando'),
