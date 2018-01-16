@@ -32,6 +32,7 @@ class rendimientoController extends Controller
         {
             $this->_view->datos=$_POST;
             if(!$this->getInt('mDia'))
+<<<<<<< HEAD
             {
                 $this->_view->_error='Registre un dia válido';
                 $this->_view->renderizar('nuevo','rendimiento');
@@ -55,6 +56,31 @@ class rendimientoController extends Controller
                 $this->_view->renderizar('nuevo','rendimiento');
                 exit;
             }
+=======
+                {
+                    $this->_view->_error='Registre un dia válido';
+                    $this->_view->renderizar('nuevo','rendimiento');
+                    exit;
+                }
+            if(!$this->getInt('mCosechado'))
+                {
+                    $this->_view->_error='Cosechando es obligatorio.';
+                    $this->_view->renderizar('nuevo','rendimiento');
+                    exit;
+                }
+            if(!$this->getInt('mGirando'))
+                {
+                    $this->_view->_error='Girando es obligatorio.';
+                    $this->_view->renderizar('nuevo','rendimiento');
+                    exit;
+                }
+            if(!$this->getInt('mVolquete'))
+                {
+                    $this->_view->_error='Sin Volquete es obligatorio';
+                    $this->_view->renderizar('nuevo','rendimiento');
+                    exit;
+                }
+>>>>>>> c6b85896b416debe96c7988452eb4ad8883a3198
 
             if(!$this->getInt('mTransporte'))
             {
@@ -94,8 +120,13 @@ class rendimientoController extends Controller
                 $this->getInt('mDistraido')
             );
 
+<<<<<<< HEAD
             $this->redireccionar('rendimiento');
         }
+=======
+>>>>>>> c6b85896b416debe96c7988452eb4ad8883a3198
         $this->_view->renderizar('nuevo','rendimiento');
+
+    }
     }
 }
