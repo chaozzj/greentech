@@ -23,7 +23,8 @@ class rendimientoController extends Controller
     }
 
     public function nuevo(){
-        //$this->_view->setJs(array('nuevo'));
+        $this->_view->setJs(array('nuevo'));
+
         $this->_view->titulo="Rendimiento";
         if($this->getInt('guardar')==1)
         {

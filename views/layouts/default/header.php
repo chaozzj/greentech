@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <!-- LOAD JQUERY LIBRARY -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
     <!-- Loading Bootstrap -->
     <link href="<?php echo $_layoutParams['ruta_css']?>bootstrap.min.css" rel="stylesheet"/>
     <link href="<?php echo $_layoutParams['ruta_css']?>bootstrap-responsive.min.css" rel="stylesheet"/>
     <!-- Loading Template CSS -->
-    <link href="<?php echo $_layoutParams['ruta_css']?>fullcalendar.css" rel="stylesheet" />
+
+    <link href="<?php echo $_layoutParams['ruta_css']?>datepicker.css" rel="stylesheet" />
+    <link href="<?php echo $_layoutParams['ruta_css']?>uniform.css" rel="stylesheet" />
+    <link href="<?php echo $_layoutParams['ruta_css']?>select2.css" rel="stylesheet" />
     <link href="<?php echo $_layoutParams['ruta_css']?>maruti-style.css" rel="stylesheet" />
     <link href="<?php echo $_layoutParams['ruta_css']?>maruti-media.css" rel="stylesheet" class="skin-color"/>
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
    <!-- LOADING FONTS AND ICONS -->
 <!--    <link href="--><?php ///*echo $_layoutParams['ruta_revs_fonts']*/?><!--pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" type="text/css"/>-->
@@ -28,7 +30,11 @@
     <script src=<?php echo $_layoutParams['ruta_js']."html5shiv.js;"?></script>
     <script src=<?php echo $_layoutParams['ruta_js']."respond.min.js;"?></script>
     <![endif]-->
-
+    <?php if(isset($_layoutParams['JS']) && count($_layoutParams['JS'])):?>
+        <?php for($i=0;$i<count($_layoutParams['JS']);$i++):?>
+            <script src="<?php echo $_layoutParams['JS'][$i];?>" type="text/javascript"></script>
+        <?php endfor;?>
+    <?php endif;?>
     <!--headerIncludes-->
 </head>
 <body>

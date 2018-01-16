@@ -35,16 +35,16 @@
 
 
 <!-- Load JS here for greater good =============================-->
-<script src=<?php echo $_layoutParams['ruta_js']."excanvas.min.js"?>></script>
+
 <script src=<?php echo $_layoutParams['ruta_js']."jquery.min.js"?>></script>
 <script src=<?php echo $_layoutParams['ruta_js']."jquery.ui.custom.js"?>></script>
+<script src=<?php echo $_layoutParams['ruta_js']."jquery.validate.js"?>></script>
 <script src=<?php echo $_layoutParams['ruta_js']."bootstrap.min.js"?>></script>
-<script src=<?php echo $_layoutParams['ruta_js']."jquery.flot.min.js"?>></script>
-<script src=<?php echo $_layoutParams['ruta_js']."jquery.flot.resize.min.js"?>></script>
-<script src=<?php echo $_layoutParams['ruta_js']."jquery.peity.min.js"?>></script>
-<script src=<?php echo $_layoutParams['ruta_js']."fullcalendar.min.js"?>></script>
+<script src=<?php echo $_layoutParams['ruta_js']."jquery.uniform.js"?>></script>
 <script src=<?php echo $_layoutParams['ruta_js']."maruti.js"?>></script>
-<script src=<?php echo $_layoutParams['ruta_js']."maruti.dashboard.js"?>></script>
-<script src=<?php echo $_layoutParams['ruta_js']."maruti.chat.js"?>></script>
+<script src=<?php echo $_layoutParams['ruta_js']."select2.min.js"?>></script>
+<script src=<?php echo $_layoutParams['ruta_js']."maruti.form_common.js"?>></script>
+<script src=<?php echo $_layoutParams['ruta_js']."bootstrap-datepicker.js"?>></script>
+<script src=<?php echo $_layoutParams['ruta_js']."bootstrap-colorpicker.js"?>></script>
 
 </body></html>
