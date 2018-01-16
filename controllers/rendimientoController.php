@@ -31,68 +31,44 @@ class rendimientoController extends Controller
         if($this->getInt('guardar')==1)
         {
             $this->_view->datos=$_POST;
-            if(!$this->getInt('mDia'))
+            if(!$this->getInt('Turno'))
             {
                 $this->_view->_error='Registre un dia válido';
                 $this->_view->renderizar('nuevo','rendimiento');
                 exit;
             }
-            if(!$this->getInt('mCosechado'))
+            if(!$this->getInt('mTocones'))
             {
-                $this->_view->_error='Cosechando es obligatorio.';
+                $this->_view->_error='Toccones es obligatorio.';
                 $this->_view->renderizar('nuevo','rendimiento');
                 exit;
             }
-            if(!$this->getInt('mGirando'))
+            if(!$this->getInt('mCañaL'))
             {
-                $this->_view->_error='Girando es obligatorio';
+                $this->_view->_error='Caña Larga es obligatorio';
                 $this->_view->renderizar('nuevo','rendimiento');
                 exit;
             }
-            if(!$this->getInt('mVolquete'))
+            if(!$this->getInt('mCañaPic'))
             {
-                $this->_view->_error='Sin Volquete es obligatorio';
-                $this->_view->renderizar('nuevo','rendimiento');
-                exit;
-            }
-
-            if(!$this->getInt('mTransporte'))
-            {
-                $this->_view->_error='Transporte es obligatorio';
+                $this->_view->_error='Caña Picada es obligatorio';
                 $this->_view->renderizar('nuevo','rendimiento');
                 exit;
             }
 
-            if(!$this->getInt('mReparacion'))
+            if(!$this->getInt('mPuntas'))
             {
-                $this->_view->_error='Reparación es obligatorio';
+                $this->_view->_error='Puntas es obligatorio';
                 $this->_view->renderizar('nuevo','rendimiento');
                 exit;
             }
 
-            if(!$this->getInt('mRevision'))
+            if(!$this->getInt('mRendimiento'))
             {
-                $this->_view->_error='Revisión es obligatorio';
+                $this->_view->_error='Rendimiento es obligatorio';
                 $this->_view->renderizar('nuevo','rendimiento');
                 exit;
             }
-
-            if(!$this->getInt('mDistraido'))
-            {
-                $this->_view->_error='Distraido es obligatorio';
-                $this->_view->renderizar('nuevo','rendimiento');
-                exit;
-            }
-            $this->_rendimientos->insertarRendimiento(
-                $this->getInt('mDia'),
-                $this->getInt('mCosechado'),
-                $this->getInt('mGirando'),
-                $this->getInt('mVolquete'),
-                $this->getInt('mTransporte'),
-                $this->getInt('mReparacion'),
-                $this->getInt('mRevision'),
-                $this->getInt('mDistraido')
-            );
 
             $this->redireccionar('rendimiento');
         }
