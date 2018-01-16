@@ -65,7 +65,7 @@ class rendimientoController extends Controller
                     exit;
                 }
 
-            if(!$this->getInt('mReparacion'))             
+            if(!$this->getInt('mReparacion'))
             {
                     $this->_view->_error='Reparación es obligatorio';
                     $this->_view->renderizar('nuevo','rendimiento');
