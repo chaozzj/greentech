@@ -31,29 +31,27 @@ class rendimientoController extends Controller
         if($this->getInt('guardar')==1)
         {
             $this->_view->datos=$_POST;
-            if(!$this->getInt('mDia')
+            if(!$this->getInt('mDia'))
                 {
                     $this->_view->_error='Registre un dia válido';
                     $this->_view->renderizar('nuevo','rendimiento');
                     exit;
                 }
             if(!$this->getInt('mCosechado'))
-
                 {
                     $this->_view->_error='Cosechando es obligatorio.';
                     $this->_view->renderizar('nuevo','rendimiento');
                     exit;
                 }
-            if(!$this->getInt('mGirando')
+            if(!$this->getInt('mGirando'))
                 {
-                    $this->_view->_error='Girando es obligatorio';
+                    $this->_view->_error='Girando es obligatorio.';
                     $this->_view->renderizar('nuevo','rendimiento');
                     exit;
                 }
             if(!$this->getInt('mVolquete'))
                 {
                     $this->_view->_error='Sin Volquete es obligatorio';
-                    $this->_view->_error='Caña Picada es obligatorio';
                     $this->_view->renderizar('nuevo','rendimiento');
                     exit;
                 }
@@ -95,7 +93,9 @@ class rendimientoController extends Controller
                 $this->getInt('mRevision'),
                 $this->getInt('mDistraido')
             );
-        }
+
         $this->_view->renderizar('nuevo','rendimiento');
+
+    }
     }
 }

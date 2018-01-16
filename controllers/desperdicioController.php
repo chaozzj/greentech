@@ -73,39 +73,6 @@ class desperdicioController extends Controller
                 $this->_view->renderizar('nuevo','rendimiento');
                 exit;
             }
-
-            $this->redireccionar('rendimiento');
-        }
-        $this->_view->renderizar('nuevo','rendimiento');
-    }
-
-    public function nuevo()
-    {
-        //$this->_view->setJs(array('nuevo'));
-        $this->_view->titulo = "Desperdicio";
-        if ($this->getInt('guardar') == 1) {
-            $this->_view->datos = $_POST;
-            if (!$this->getTexto('correo')) {
-                $this->_view->_error = 'Registre un correo válido';
-                $this->_view->renderizar('nuevo', 'desperdicio');
-                exit;
-            }
-            if (!$this->getTexto('pnombre')) {
-                $this->_view->_error = 'Primer nombre es obligatorio.';
-                $this->_view->renderizar('nuevo', 'desperdicio');
-                exit;
-            }
-            if (!$this->getTexto('papellido')) {
-                $this->_view->_error = 'Primer apellido es obligatorio';
-                $this->_view->renderizar('nuevo', 'desperdicio');
-                exit;
-            }
-            if (!$this->getTexto('cedula')) {
-                $this->_view->_error = 'El documento de identidad es obligatorio';
-                $this->_view->renderizar('nuevo', 'desperdicio');
-                exit;
-            }
-
             $this->_usuarios->insertarUsuario(
                 $this->getTexto('correo'),
                 $this->getTexto('pnombre'),
@@ -116,8 +83,9 @@ class desperdicioController extends Controller
                 $this->getTexto('cedula')
             );
 
-            $this->redireccionar('usuarios');
+            $this->redireccionar('rendimiento');
         }
-        $this->_view->renderizar('nuevo', 'desperdicio');
+        $this->_view->renderizar('nuevo','rendimiento');
+    
     }
 }
