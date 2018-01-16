@@ -29,42 +29,70 @@ class rendimientoController extends Controller
         if($this->getInt('guardar')==1)
         {
             $this->_view->datos=$_POST;
-            if(!$this->getTexto('correo'))
+            if(!$this->getInt('mDia'))
             {
-                $this->_view->_error='Registre un correo válido';
+                $this->_view->_error='Registre un dia válido';
                 $this->_view->renderizar('nuevo','rendimiento');
                 exit;
             }
-            if(!$this->getTexto('pnombre'))
+            if(!$this->getInt('mCosechado'))
             {
-                $this->_view->_error='Primer nombre es obligatorio.';
+                $this->_view->_error='Cosechando es obligatorio.';
                 $this->_view->renderizar('nuevo','rendimiento');
                 exit;
             }
-            if(!$this->getTexto('papellido'))
+            if(!$this->getInt('mGirando'))
             {
-                $this->_view->_error='Primer apellido es obligatorio';
+                $this->_view->_error='Girando es obligatorio';
                 $this->_view->renderizar('nuevo','rendimiento');
                 exit;
             }
-            if(!$this->getTexto('cedula'))
+            if(!$this->getInt('mVolquete'))
             {
-                $this->_view->_error='El documento de identidad es obligatorio';
+                $this->_view->_error='Sin Volquete es obligatorio';
                 $this->_view->renderizar('nuevo','rendimiento');
                 exit;
             }
 
-            $this->_usuarios->insertarUsuario(
-                $this->getTexto('correo'),
-                $this->getTexto('pnombre'),
-                $this->getTexto('snombre'),
-                $this->getTexto('papellido'),
-                $this->getTexto('sapellido'),
-                $this->getInt('msexo'),
-                $this->getTexto('cedula')
+            if(!$this->getInt('mTransporte'))
+            {
+                $this->_view->_error='Transporte es obligatorio';
+                $this->_view->renderizar('nuevo','rendimiento');
+                exit;
+            }
+
+            if(!$this->getInt('mReparacion'))
+            {
+                $this->_view->_error='Reparación es obligatorio';
+                $this->_view->renderizar('nuevo','rendimiento');
+                exit;
+            }
+
+            if(!$this->getInt('mRevision'))
+            {
+                $this->_view->_error='Revisión es obligatorio';
+                $this->_view->renderizar('nuevo','rendimiento');
+                exit;
+            }
+
+            if(!$this->getInt('mDistraido'))
+            {
+                $this->_view->_error='Distraido es obligatorio';
+                $this->_view->renderizar('nuevo','rendimiento');
+                exit;
+            }
+            $this->_usuarios->insertarRendimiento(
+                $this->getInt('mDia'),
+                $this->getInt('mCosechado'),
+                $this->getInt('mGirando'),
+                $this->getInt('mVolquete'),
+                $this->getInt('mTransporte'),
+                $this->getInt('mReparacion'),
+                $this->getInt('mRevision'),
+                $this->getInt('mDistraido')
             );
 
-            $this->redireccionar('usuarios');
+            $this->redireccionar('rendimiento');
         }
         $this->_view->renderizar('nuevo','rendimiento');
     }

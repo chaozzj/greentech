@@ -24,6 +24,23 @@ class rendimientoModel extends Model {
         return $post;*/
     }
 
+    public function insertarRendimiento($dia ,$cosechando ,$girando ,$volquete ,$transporte ,$reparacion ,$revision ,$distraido ,$otro )
+    {
+        $this->_db->prepare("INSERT INTO rendimiento (dia ,cosechando ,girando ,volquete ,transporte ,reparacion ,revision ,distraido ,otro ) 
+            VALUES(:dia,:cosechando,:girando,:volquete,:transporte,:reparacion,:revision,:distraido,:otro)")
+            ->execute(array(
+                ':dia'=>$dia,
+                ':cosechando'=>$cosechando,
+                ':girando'=>$girando,
+                ':volquete'=>$volquete,
+                ':transporte'=>$transporte,
+                ':reparacion'=>$reparacion,
+                ':revision'=>$revision,
+                ':distraido'=>$distraido,
+                ':otro'=>$otro
+            ));
+    }
+
     public function getPostID($id)
     {
         $id=(int)$id;
