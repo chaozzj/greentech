@@ -25,6 +25,60 @@ class desperdicioController extends Controller
         $this->_view->renderizar('index');
     }
 
+
+    public function nuevo(){
+        $this->_view->setJs(array('nuevo'));
+
+        $this->_view->titulo="Agregar Rendimiento";
+        $this->_view->tagline=APP_SLOGAN;
+        $this->_view->company=APP_COMPANY;
+        if($this->getInt('guardar')==1)
+        {
+            $this->_view->datos=$_POST;
+            if(!$this->getInt('Turno'))
+            {
+                $this->_view->_error='Registre un dia válido';
+                $this->_view->renderizar('nuevo','rendimiento');
+                exit;
+            }
+            if(!$this->getInt('mTocones'))
+            {
+                $this->_view->_error='Toccones es obligatorio.';
+                $this->_view->renderizar('nuevo','rendimiento');
+                exit;
+            }
+            if(!$this->getInt('mCañaL'))
+            {
+                $this->_view->_error='Caña Larga es obligatorio';
+                $this->_view->renderizar('nuevo','rendimiento');
+                exit;
+            }
+            if(!$this->getInt('mCañaPic'))
+            {
+                $this->_view->_error='Caña Picada es obligatorio';
+                $this->_view->renderizar('nuevo','rendimiento');
+                exit;
+            }
+
+            if(!$this->getInt('mPuntas'))
+            {
+                $this->_view->_error='Puntas es obligatorio';
+                $this->_view->renderizar('nuevo','rendimiento');
+                exit;
+            }
+
+            if(!$this->getInt('mRendimiento'))
+            {
+                $this->_view->_error='Rendimiento es obligatorio';
+                $this->_view->renderizar('nuevo','rendimiento');
+                exit;
+            }
+
+            $this->redireccionar('rendimiento');
+        }
+        $this->_view->renderizar('nuevo','rendimiento');
+    }
+
     public function nuevo()
     {
         //$this->_view->setJs(array('nuevo'));

@@ -31,46 +31,70 @@ class rendimientoController extends Controller
         if($this->getInt('guardar')==1)
         {
             $this->_view->datos=$_POST;
-            if(!$this->getInt('Turno'))
+            if(!$this->getInt('mDia')
+                {
+                    $this->_view->_error='Registre un dia válido';
+                    $this->_view->renderizar('nuevo','rendimiento');
+                    exit;
+                }
+            if(!$this->getInt('mCosechado'))
+
+                {
+                    $this->_view->_error='Cosechando es obligatorio.';
+                    $this->_view->renderizar('nuevo','rendimiento');
+                    exit;
+                }
+            if(!$this->getInt('mGirando')
+                {
+                    $this->_view->_error='Girando es obligatorio';
+                    $this->_view->renderizar('nuevo','rendimiento');
+                    exit;
+                }
+            if(!$this->getInt('mVolquete'))
+                {
+                    $this->_view->_error='Sin Volquete es obligatorio';
+                    $this->_view->_error='Caña Picada es obligatorio';
+                    $this->_view->renderizar('nuevo','rendimiento');
+                    exit;
+                }
+
+            if(!$this->getInt('mTransporte'))
             {
-                $this->_view->_error='Registre un dia válido';
-                $this->_view->renderizar('nuevo','rendimiento');
-                exit;
-            }
-            if(!$this->getInt('mTocones'))
+                    $this->_view->_error='Transporte es obligatorio';
+                    $this->_view->renderizar('nuevo','rendimiento');
+                    exit;
+                }
+
+            if(!$this->getInt('mReparacion'))             
             {
-                $this->_view->_error='Toccones es obligatorio.';
-                $this->_view->renderizar('nuevo','rendimiento');
-                exit;
-            }
-            if(!$this->getInt('mCañaL'))
+                    $this->_view->_error='Reparación es obligatorio';
+                    $this->_view->renderizar('nuevo','rendimiento');
+                    exit;
+                }
+
+            if(!$this->getInt('mRevision'))
             {
-                $this->_view->_error='Caña Larga es obligatorio';
-                $this->_view->renderizar('nuevo','rendimiento');
-                exit;
-            }
-            if(!$this->getInt('mCañaPic'))
-            {
-                $this->_view->_error='Caña Picada es obligatorio';
+                $this->_view->_error='Revisión es obligatorio';
                 $this->_view->renderizar('nuevo','rendimiento');
                 exit;
             }
 
-            if(!$this->getInt('mPuntas'))
+            if(!$this->getInt('mDistraido'))
             {
-                $this->_view->_error='Puntas es obligatorio';
+                $this->_view->_error='Distraido es obligatorio';
                 $this->_view->renderizar('nuevo','rendimiento');
                 exit;
             }
-
-            if(!$this->getInt('mRendimiento'))
-            {
-                $this->_view->_error='Rendimiento es obligatorio';
-                $this->_view->renderizar('nuevo','rendimiento');
-                exit;
-            }
-
-            $this->redireccionar('rendimiento');
+            $this->_rendimientos->insertarRendimiento(
+                $this->getInt('mDia'),
+                $this->getInt('mCosechado'),
+                $this->getInt('mGirando'),
+                $this->getInt('mVolquete'),
+                $this->getInt('mTransporte'),
+                $this->getInt('mReparacion'),
+                $this->getInt('mRevision'),
+                $this->getInt('mDistraido')
+            );
         }
         $this->_view->renderizar('nuevo','rendimiento');
     }
