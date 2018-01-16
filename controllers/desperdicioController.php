@@ -25,7 +25,7 @@ class desperdicioController extends Controller
         $this->_view->renderizar('index');
     }
 
-   /* public function nuevo()
+    public function nuevo()
     {
         //$this->_view->setJs(array('nuevo'));
         $this->_view->titulo = "Desperdicio";
@@ -65,5 +65,5 @@ class desperdicioController extends Controller
             $this->redireccionar('usuarios');
         }
         $this->_view->renderizar('nuevo', 'desperdicio');
-    }*/
+    }
 }
