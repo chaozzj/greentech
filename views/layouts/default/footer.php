@@ -39,11 +39,13 @@
 <script src=<?php echo $_layoutParams['ruta_js']."jquery.min.js"?>></script>
 <script src=<?php echo $_layoutParams['ruta_js']."jquery.ui.custom.js"?>></script>
 <script src=<?php echo $_layoutParams['ruta_js']."jquery.validate.js"?>></script>
+<script src=<?php echo $_layoutParams['ruta_js']."jquery.dataTables.min.js"?>></script>
 <script src=<?php echo $_layoutParams['ruta_js']."bootstrap.min.js"?>></script>
 <script src=<?php echo $_layoutParams['ruta_js']."jquery.uniform.js"?>></script>
 <script src=<?php echo $_layoutParams['ruta_js']."maruti.js"?>></script>
 <script src=<?php echo $_layoutParams['ruta_js']."select2.min.js"?>></script>
-<script src=<?php echo $_layoutParams['ruta_js']."maruti.form_common.js"?>></script>
+<script src=<?php echo $_layoutParams['ruta_js']."maruti.form_common.js"?>>
+<script src=<?php echo $_layoutParams['ruta_js']."maruti.tables.js"?>></script>
 <script src=<?php echo $_layoutParams['ruta_js']."bootstrap-datepicker.js"?>></script>
 <script src=<?php echo $_layoutParams['ruta_js']."bootstrap-colorpicker.js"?>></script>
 

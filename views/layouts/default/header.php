@@ -88,7 +88,7 @@
             <ul class="quick-actions">
                 <li> <a href="<?php echo BASE_URL.'rendimiento'?>"> <i class="icon-dashboard"></i> Rendimiento </a> </li>
                 <li> <a href="<?php echo BASE_URL.'desperdicio'?>"> <i class="icon-graph"></i> Desperdicio de Caña</a> </li>
-                <li> <a href="#"> <i class="icon-book"></i> Materia Extraña </a> </li>
+                <li> <a href="<?php echo BASE_URL.'materia'?>"> <i class="icon-book"></i> Materia Extraña </a> </li>
             </ul>
         </div>
 <!--end header -->
