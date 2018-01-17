@@ -18,6 +18,8 @@ require_once  APP_PATH . 'Registro.php';
 require_once  APP_PATH . 'View.php';
 require_once  APP_PATH . 'Bootstrap.php';
 require_once  APP_PATH . 'Database.php';
+require_once  APP_PATH . 'Sessions.php';
+
 
 try{
     Bootstrap::run( new Request);
