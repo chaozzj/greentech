@@ -1354,7 +1354,7 @@ form {
 }
 
 @media (min-width: 481px) and (max-width: 970px) {
-	body{ background:#49CCED}
+	body{ background:#ffffff}
 	#header h1 {
 		top:20px;
 	}
@@ -1365,7 +1365,7 @@ form {
 
 	#sidebar > ul > li{ float:none;}
 	#sidebar > ul > li:hover ul{ display:block;}
-	#sidebar, #sidebar > ul {	width: 43px; display: block; position: absolute; background:#49CCED; height:100%; z-index:1;}
+	#sidebar, #sidebar > ul {	width: 43px; display: block; position: absolute; background:#ffffff; height:100%; z-index:1;}
 	#sidebar > ul ul {
 		display: none;
 		position: absolute;

@@ -18,10 +18,6 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-   <!-- LOADING FONTS AND ICONS -->
-<!--    <link href="--><?php ///*echo $_layoutParams['ruta_revs_fonts']*/?><!--pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" type="text/css"/>-->
-<!--    <link href="--><?php ///*echo $_layoutParams['ruta_revs_fonts']*/?><!--font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>-->
-
     <!-- Font Favicon -->
     <!--<link rel="shortcut icon" href="images/favicon.ico">-->
 
@@ -48,7 +44,11 @@
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
     <ul class="nav">
-        <li class=""><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Salir</span></a></li>
+        <?php if(!Sessions::get('autenticado')):?>
+            <li class=""><a title="" href="<?php echo BASE_URL. 'login';?>"><i class="icon icon-user"></i> <span class="text">Iniciar Sesión</span></a></li>
+        <?php else:?>
+        <li class=""><a title="" href="<?php echo BASE_URL. 'login/logout';?>"><i class="icon icon-share-alt"></i> <span class="text">Salir</span></a></li>
+        <?php endif;?>
     </ul>
 </div>
 <!--close-top-Header-menu-->
@@ -85,10 +85,12 @@
     </div>
     <div class="container-fluid">
         <div class="quick-actions_homepage">
-            <ul class="quick-actions">
+            <?php if(Sessions::get('autenticado')):?>
+                <ul class="quick-actions">
                 <li> <a href="<?php echo BASE_URL.'rendimiento'?>"> <i class="icon-dashboard"></i> Rendimiento </a> </li>
                 <li> <a href="<?php echo BASE_URL.'desperdicio'?>"> <i class="icon-graph"></i> Desperdicio de Caña</a> </li>
                 <li> <a href="<?php echo BASE_URL.'materia'?>"> <i class="icon-book"></i> Materia Extraña </a> </li>
             </ul>
+            <?php endif;?>
         </div>
 <!--end header -->

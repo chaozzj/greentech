@@ -23,6 +23,8 @@ class rendimientoController extends Controller
     }
 
     public function nuevo(){
+        Sessions::acceso('digitador');
+
         $this->_view->setJs(array('nuevo'));
 
         $this->_view->titulo="Agregar Rendimiento";

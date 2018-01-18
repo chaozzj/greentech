@@ -33,6 +33,7 @@ class materiaController extends Controller
         $this->_view->variedad = $this->_materias->getVariedades();
         $this->_view->tagline=APP_SLOGAN;
         $this->_view->company=APP_COMPANY;
+
         if($this->getInt('guardar')==1)
         {
             $this->_view->datos=$_POST;
@@ -42,7 +43,6 @@ class materiaController extends Controller
                 $this->_view->renderizar('nuevo','materia');
                 exit;
             }
-
             if(!$this->getDec('mCepa'))
             {
                 $this->_view->_error='Cepa es obligatorio.';
