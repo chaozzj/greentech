@@ -45,7 +45,7 @@ class Sessions{
 
         Sessions::tiempo();
 
-        if(Sessions::getLevel($level)>Sessions::get('level')){
+        if(Sessions::getLevel($level)>Sessions::getLevel(Sessions::get('level'))){
             header('location: '. BASE_URL .'error/access/5050');
             exit;
         }
@@ -54,7 +54,7 @@ class Sessions{
         if(!Sessions::get('autenticado')){
             return false;
         }
-        if(Sessions::getLevel($level)>Sessions::get('level')){
+        if(Sessions::getLevel($level)>Sessions::getLevel(Sessions::get('level'))){
             return false;
         }
         else{
@@ -62,9 +62,9 @@ class Sessions{
         }
     }
     public static function getLevel($level){
-        $role['admin']=3;
-        $role['digitador']=2;
-        $role['gerente']=1;
+        $role['Administrador']=3;
+        $role['Gerente']=2;
+        $role['Digitador']=1;
 
         if(!array_key_exists($level,$role)){
             throw new Exception('Error de acceso');
@@ -74,7 +74,7 @@ class Sessions{
         }
     }
     public static function tiempo(){
-        if(!Sessions::get('tiempo')|| !define('SESSION_TIME')){
+        if(!Sessions::get('tiempo')|| !defined('SESSION_TIME')){
             throw new Exception('Constante no definida');
         }
         if(SESSION_TIME==0){

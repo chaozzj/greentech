@@ -15,6 +15,7 @@ class rendimientoController extends Controller
     }
 
     public function index(){
+        Sessions::acceso('Digitador');
         $this->_view->rendimientos= $this->_rendimientos->getRendimientos();
         $this->_view->titulo=APP_NAME;
         $this->_view->tagline=APP_SLOGAN;
@@ -23,7 +24,7 @@ class rendimientoController extends Controller
     }
 
     public function nuevo(){
-        Sessions::acceso('digitador');
+        Sessions::acceso('Digitador');
 
         $this->_view->setJs(array('nuevo'));
 

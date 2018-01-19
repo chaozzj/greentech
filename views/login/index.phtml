@@ -17,21 +17,21 @@
                 </div>
                 <div class="widget-content nopadding">
                     <form id="frmLogin" class="form-horizontal" method="post"  action="">
-                        <input type="hidden"name="guardar" value="1"/>
+                        <input type="hidden" name="enviar" value="1"/>
                         <div class="control-group">
                             <label class="control-label">Usuario</label>
                             <div class="controls">
-                                <input type="text" name="mUsuario"/>
-                                <?php echo $this->_error; ?>
+                                <input type="text" name="mUsuario" id="mUsuario" value="<?php if (isset($this->datos)) echo $this->datos['mUsuario']; ?>"/>
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Contraseña</label>
                             <div class="controls">
-                                <input type="password" name="mPassword"/>
+                                <input type="password" name="mPassword" id="mPassword" value="<?php if (isset($this->datos)) echo $this->datos['mPassword']; ?>"/>
                             </div>
                         </div>
                         <div class="form-actions">
+                            <p style="color: red;"><?php echo $this->_error;?></p>
                             <button type="submit" class="btn btn-success">Ingresar</button>
                             <button type="button" class="btn btn-danger">Cancelar</button>
                         </div>

@@ -15,6 +15,7 @@ class materiaController extends Controller
     }
 
     public function index(){
+        Sessions::acceso('Digitador');
         $this->_view->materias= $this->_materias->getMaterias();
 
         $this->_view->titulo=APP_NAME;
@@ -24,6 +25,7 @@ class materiaController extends Controller
     }
 
     public function nuevo(){
+        Sessions::acceso('Digitador');
         $this->_view->setJs(array('nuevo'));
 
         $this->_view->titulo="Agregar Materia Extraña";
@@ -36,6 +38,7 @@ class materiaController extends Controller
 
         if($this->getInt('guardar')==1)
         {
+            Sessions::acceso('Digitador');
             $this->_view->datos=$_POST;
             if(!$this->getInt('mDia'))
             {

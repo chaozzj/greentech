@@ -18,6 +18,7 @@ class desperdicioController extends Controller
 
     public function index()
     {
+        Sessions::acceso('Digitador');
         $this->_view->desperdicio = $this->_desperdicio->getDesperdicio();
         $this->_view->titulo = APP_NAME;
         $this->_view->tagline = APP_SLOGAN;
@@ -27,6 +28,8 @@ class desperdicioController extends Controller
 
 
     public function nuevo(){
+        Sessions::acceso('Digitador');
+
         $this->_view->setJs(array('nuevo'));
 
         $this->_view->titulo="Agregar Desperdicio";
