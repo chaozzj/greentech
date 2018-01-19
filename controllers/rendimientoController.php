@@ -24,10 +24,33 @@ class rendimientoController extends Controller
     }
     public function upload(){
         Sessions::acceso('Administrador');
-        //$this->_view->rendimientos= $this->_rendimientos->getRendimientos();
+        $this->_view->_error='';
         $this->_view->titulo=APP_NAME;
         $this->_view->tagline=APP_SLOGAN;
         $this->_view->company='Rendimiento';
+
+        if($this->getInt('guardar')==1){
+            if (empty($_FILES['mArchivo']['name'])){
+                $this->_view->_error='Seleccione Archivo';
+                $this->_view->renderizar('upload','rendimiento');
+                exit;
+            }
+            $con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+            $binario_contenido =  mysqli_real_escape_string($con,(file_get_contents($_FILES['mArchivo']['tmp_name'])));
+            $binario_nombre=$_FILES['mArchivo']['name'];
+            $binario_tipo=$_FILES['mArchivo']['type'];
+            $titulo= $_POST['mTitulo'];
+            //$this->_view->_error=  $binario_nombre.' ' .$binario_tipo . ' ' .$binario_contenido;
+
+            $this->_rendimientos->insertarArchivo(
+                $binario_nombre,
+                $titulo,
+                $binario_contenido,
+                $binario_tipo
+            );
+
+            $this->redireccionar('rendimiento');
+        }
         $this->_view->renderizar('upload');
     }
     public function nuevo(){

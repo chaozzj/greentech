@@ -57,7 +57,17 @@ ORDER BY materia.id");
                 ':secas'=>$secas,
             ));
     }
-
+    public function insertarArchivo($nombre ,$titulo ,$contenido ,$tipo)
+    {
+        $this->_db->prepare("INSERT INTO archivosm (nombre ,titulo ,contenido ,tipo)  
+            VALUES(:nombre ,:titulo ,:contenido ,:tipo)")
+            ->execute(array(
+                ':nombre'=>$nombre,
+                ':titulo'=>$titulo,
+                ':contenido'=>$contenido,
+                ':tipo'=>$tipo
+            ));
+    }
     public function getPostID($id)
     {
         $id=(int)$id;

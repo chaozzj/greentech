@@ -6,7 +6,8 @@
                     <span class="icon"><i class="icon-th"></i></span>
                     <h5>Materia Extraña</h5>
                     <div class="buttons">
-                        <button id="btnexport" class="btn btn-mini btn-success"><i class="icon-arrow-down"></i> Exportar</button>
+                        <a href="<?php echo BASE_URL?>materia/upload" class="btn btn-mini btn-success"><i class="icon-hdd"></i> Subir Archivo</a>
+                        <button id="btnexport" class="btn btn-mini btn-success"><i class="icon-download-alt"></i> Exportar</button>
                         <a href="<?php echo BASE_URL?>materia/nuevo" class="btn btn-mini btn-success"><i class="icon-plus"></i> Añadir</a>
                     </div>
                 </div>
@@ -25,7 +26,7 @@
                             <th>Cepa</th>
                             <th>Hojas</th>
                             <th>Tierra</th>
-                            <th>Raíces</th>
+                            <th>Cogollo</th>
                         </tr>
                         </thead>
                         <?php for($i=0;$i<count($this->materias);$i++):?>

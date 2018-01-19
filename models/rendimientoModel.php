@@ -40,6 +40,17 @@ class rendimientoModel extends Model {
             ));
     }
 
+    public function insertarArchivo($nombre ,$titulo ,$contenido ,$tipo)
+    {
+        $this->_db->prepare("INSERT INTO archivos_r (nombre ,titulo ,contenido ,tipo)  
+            VALUES(:nombre ,:titulo ,:contenido ,:tipo)")
+            ->execute(array(
+                ':nombre'=>$nombre,
+                ':titulo'=>$titulo,
+                ':contenido'=>$contenido,
+                ':tipo'=>$tipo
+            ));
+    }
     public function getPostID($id)
     {
         $id=(int)$id;

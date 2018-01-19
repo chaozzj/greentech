@@ -6,7 +6,8 @@
                     <span class="icon"><i class="icon-th"></i></span>
                     <h5>Rendimiento de las cosechadoras</h5>
                     <div class="buttons">
-                        <button id="btnexport" class="btn btn-mini btn-success"><i class="icon-arrow-down"></i> Exportar</button>
+                        <a href="<?php echo BASE_URL?>rendimiento/upload" class="btn btn-mini btn-success"><i class="icon-hdd"></i> Subir Archivo</a>
+                        <button id="btnexport" class="btn btn-mini btn-success"><i class="icon-download-alt"></i> Exportar</button>
                         <a href="<?php echo BASE_URL?>rendimiento/nuevo" class="btn btn-mini btn-success"><i class="icon-plus"></i> Añadir</a>
                     </div>
                 </div>
@@ -24,7 +25,6 @@
                             <th>Reparacion</th>
                             <th>Revisión</th>
                             <th>Distraído</th>
-                            <th>Otro</th>
                         </tr>
                         </thead>
                         <?php for($i=0;$i<count($this->rendimientos);$i++):?>
@@ -39,7 +39,6 @@
                             <td class="center"><?php echo $this->rendimientos[$i]['reparacion'];?></td>
                             <td class="center"><?php echo $this->rendimientos[$i]['revision'];?></td>
                             <td class="center"><?php echo $this->rendimientos[$i]['distraido'];?>  </td>
-                            <td class="center"><?php echo $this->rendimientos[$i]['otro'];?>  </td>
                         </tr>
                         </tbody>
                         <?php endfor;?>

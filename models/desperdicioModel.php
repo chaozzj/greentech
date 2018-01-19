@@ -63,6 +63,17 @@ INNER JOIN turno ON turno.id= captura.turno
                 ':rendimiento'=>$rendimiento
             ));
     }
+    public function insertarArchivo($nombre ,$titulo ,$contenido ,$tipo)
+    {
+        $this->_db->prepare("INSERT INTO archivos (nombre ,titulo ,contenido ,tipo)  
+            VALUES(:nombre ,:titulo ,:contenido ,:tipo)")
+            ->execute(array(
+                ':nombre'=>$nombre,
+                ':titulo'=>$titulo,
+                ':contenido'=>$contenido,
+                ':tipo'=>$tipo
+            ));
+    }
     public function getPostID($id)
     {
         $id=(int)$id;

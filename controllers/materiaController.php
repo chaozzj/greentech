@@ -23,7 +23,37 @@ class materiaController extends Controller
         $this->_view->company='Materia Extraña';
         $this->_view->renderizar('index');
     }
+    public function upload(){
+        Sessions::acceso('Administrador');
+        $this->_view->_error='';
+        $this->_view->titulo=APP_NAME;
+        $this->_view->tagline=APP_SLOGAN;
+        $this->_view->company='Materia';
 
+        if($this->getInt('guardar')==1){
+            if (empty($_FILES['mArchivo']['name'])){
+                $this->_view->_error='Seleccione Archivo';
+                $this->_view->renderizar('upload','materia');
+                exit;
+            }
+            $con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+            $binario_contenido =  mysqli_real_escape_string($con,(file_get_contents($_FILES['mArchivo']['tmp_name'])));
+            $binario_nombre=$_FILES['mArchivo']['name'];
+            $binario_tipo=$_FILES['mArchivo']['type'];
+            $titulo= $_POST['mTitulo'];
+            //$this->_view->_error=  $binario_nombre.' ' .$binario_tipo . ' ' .$binario_contenido;
+
+            $this->_materias->insertarArchivo(
+                $binario_nombre,
+                $titulo,
+                $binario_contenido,
+                $binario_tipo
+            );
+
+            $this->redireccionar('materia');
+        }
+        $this->_view->renderizar('upload');
+    }
     public function nuevo(){
         Sessions::acceso('Digitador');
         $this->_view->setJs(array('nuevo'));
