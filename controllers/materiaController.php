@@ -58,6 +58,12 @@ class materiaController extends Controller
                 $this->_view->renderizar('nuevo','materia');
                 exit;
             }
+            if(!$this->getDec('mPeso'))
+            {
+                $this->_view->_error='Peso es obligatorio';
+                $this->_view->renderizar('nuevo','materia');
+                exit;
+            }
             if(!$this->getDec('mHojas'))
             {
                 $this->_view->_error='Hojas es obligatorio';
@@ -78,6 +84,7 @@ class materiaController extends Controller
                 $this->getInt('mOperador'),
                 $this->getInt('mFinca'),
                 $this->getInt('mVariedad'),
+                $this->getDec('mPeso'),
                 $this->getDec('mCepa'),
                 $this->getDec('mTierra'),
                 $this->getDec('mHojas'),

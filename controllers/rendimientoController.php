@@ -22,7 +22,14 @@ class rendimientoController extends Controller
         $this->_view->company='Rendimiento';
         $this->_view->renderizar('index');
     }
-
+    public function upload(){
+        Sessions::acceso('Administrador');
+        //$this->_view->rendimientos= $this->_rendimientos->getRendimientos();
+        $this->_view->titulo=APP_NAME;
+        $this->_view->tagline=APP_SLOGAN;
+        $this->_view->company='Rendimiento';
+        $this->_view->renderizar('upload');
+    }
     public function nuevo(){
         Sessions::acceso('Digitador');
 

@@ -5,13 +5,17 @@
                 <div class="widget-title">
                     <span class="icon"><i class="icon-th"></i></span>
                     <h5>Desperdicios de Caña</h5>
-                    <div class="buttons"><a href="<?php echo BASE_URL?>desperdicio/nuevo" class="btn btn-mini btn-success"><i class="icon-plus"></i> Añadir</a></div>
+                    <div class="buttons">
+                        <button id="btnexport" class="btn btn-mini btn-success"><i class="icon-arrow-down"></i> Exportar</button>
+                        <a href="<?php echo BASE_URL?>desperdicio/nuevo" class="btn btn-mini btn-success"><i class="icon-plus"></i> Añadir</a>
+                    </div>
                 </div>
                 <?php if(isset($this->desperdicio)&& count($this->desperdicio)):?>
                 <div class="widget-content nopadding">
                     <table class="table table-bordered data-table">
                         <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Dia</th>
                             <th>Máquina</th>
                             <th>Operador</th>
@@ -28,6 +32,7 @@
                         <?php for($i=0;$i<count($this->desperdicio);$i++):?>
                             <tbody>
                             <tr class="gradeX">
+                                <td><?php echo $this->desperdicio[$i]['idcaptura'];?></td>
                                 <td><?php echo $this->desperdicio[$i]['dia'];?></td>
                                 <td><?php echo $this->desperdicio[$i]['maquina_nombre'];?></td>
                                 <td class="center"><?php echo $this->desperdicio[$i]['operador_nombre'];?></td>

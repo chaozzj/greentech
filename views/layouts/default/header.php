@@ -16,8 +16,9 @@
     <link href="<?php echo $_layoutParams['ruta_css']?>maruti-style.css" rel="stylesheet" />
     <link href="<?php echo $_layoutParams['ruta_css']?>maruti-media.css" rel="stylesheet" class="skin-color"/>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src=<?php echo $_layoutParams['ruta_js']."jquery.table2excel.min.js"?>></script>
     <!-- Font Favicon -->
     <!--<link rel="shortcut icon" href="images/favicon.ico">-->
 

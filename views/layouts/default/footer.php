@@ -48,5 +48,22 @@
 <!--<script src=<?php echo $_layoutParams['ruta_js']."maruti.tables.js"?>></script>-->
 <script src=<?php echo $_layoutParams['ruta_js']."bootstrap-datepicker.js"?>></script>
 <script src=<?php echo $_layoutParams['ruta_js']."bootstrap-colorpicker.js"?>></script>
+<script src=<?php echo $_layoutParams['ruta_js']."jquery.table2excel.js"?>></script>
 
+
+<?php if(Sessions::get('level')=='Administrador'):?>
+    <script type="text/javascript">
+        $('#btnexport').click(function (){
+            $('.table').table2excel({
+                exclude: ".noExl",
+                name:'GreenTech export',
+                filename: "GreenTech",
+                fileext: ".xls",
+                exclude_img: true,
+                exclude_links: true,
+                exclude_inputs: true
+            })
+        })
+    </script>
+<?php endif;?>
 </body></html>

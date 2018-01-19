@@ -13,7 +13,7 @@ class rendimientoModel extends Model {
     }
 
     public function getRendimientos(){
-        $post = $this->_db->query("SELECT * FROM rendimiento");
+        $post = $this->_db->query("SELECT * FROM rendimiento ORDER BY id");
         return $post->fetchAll();
 
         /*$post = array(

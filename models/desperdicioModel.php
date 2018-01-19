@@ -13,13 +13,15 @@ class desperdicioModel extends Model {
     }
 
     public function getDesperdicio(){
-        $post = $this ->_db->query("SELECT dia,turno,maquina.nombre AS maquina_nombre, operadores.nombres AS operador_nombre, fincas.nombre AS finca_nombre,
+        $post = $this ->_db->query("SELECT captura.id as idcaptura,dia,turno.nombre as turno,maquina.nombre AS maquina_nombre, operadores.nombres AS operador_nombre, fincas.nombre AS finca_nombre,
 variedad.nombre AS variedad_nombre, captura.tocones, captura.cana_larga,captura.cana_picada,captura.puntas,captura.rendimiento
 FROM captura
 INNER JOIN fincas  ON fincas.id= captura.finca
 inner JOIN maquina on maquina.id= captura.maquina
 INNER JOIN operadores ON operadores.int = captura.operador
-INNER JOIN variedad ON variedad.id= captura.variedad");
+INNER JOIN variedad ON variedad.id= captura.variedad
+INNER JOIN turno ON turno.id= captura.turno 
+ ORDER BY captura.id");
         return $post->fetchAll();
     }
 
@@ -39,10 +41,14 @@ INNER JOIN variedad ON variedad.id= captura.variedad");
         $post = $this->_db->query("SELECT * FROM variedad");
         return $post->fetchAll();
     }
+    public function getTurnos(){
+        $post = $this->_db->query("SELECT * FROM turno");
+        return $post->fetchAll();
+    }
     public function insertarDesperdicio($dia ,$maquina ,$operador ,$turno ,$finca ,$variedad ,$tocones ,$cana_larga, $cana_picada, $puntas, $rendimiento)
     {
         $this->_db->prepare("INSERT INTO captura (dia ,maquina ,operador ,turno ,finca ,variedad ,tocones ,cana_larga ,cana_picada ,puntas ,rendimiento ) 
-            VALUES(:dia ,:maquina ,:operador ,:turno ,:finca ,:variedad ,:tocones ,:cana_larga ,:cana_picada ,:puntas ,rendimiento)")
+            VALUES(:dia ,:maquina ,:operador ,:turno ,:finca ,:variedad ,:tocones ,:cana_larga ,:cana_picada ,:puntas ,:rendimiento)")
             ->execute(array(
                 ':dia'=>$dia,
                 ':maquina'=>$maquina,

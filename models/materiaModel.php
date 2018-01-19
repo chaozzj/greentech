@@ -13,13 +13,14 @@ class materiaModel extends Model {
     }
 
     public function getMaterias(){
-        $post = $this->_db->query("SELECT dia,maquina.nombre AS maquina_nombre, operadores.nombres AS operador_nombre, fincas.nombre AS finca_nombre,
+        $post = $this->_db->query("SELECT materia.id as idmateria,dia,maquina.nombre AS maquina_nombre, operadores.nombres AS operador_nombre, fincas.nombre AS finca_nombre,
 variedad.nombre AS variedad_nombre, materia.cepa, materia.tierra,materia.cogollo, materia.verdes,materia.secas
 FROM materia
-INNER JOIN fincas  ON fincas.id= materia.finca
-inner JOIN maquina on maquina.id= materia.maquina
-INNER JOIN operadores ON operadores.int = materia.operador
-INNER JOIN variedad ON variedad.id= materia.variedad");
+LEFT JOIN fincas  ON fincas.id= materia.finca
+LEFT JOIN maquina on maquina.id= materia.maquina
+LEFT JOIN operadores ON operadores.int = materia.operador
+LEFT JOIN variedad ON variedad.id= materia.variedad
+ORDER BY materia.id");
         return $post->fetchAll();
     }
 
@@ -39,16 +40,17 @@ INNER JOIN variedad ON variedad.id= materia.variedad");
         $post = $this->_db->query("SELECT * FROM variedad");
         return $post->fetchAll();
     }
-    public function insertarMateria($dia ,$maquina ,$operador  ,$finca ,$variedad ,$cepa ,$tierra  ,$verdes ,$secas )
+    public function insertarMateria($dia ,$maquina ,$operador  ,$finca ,$variedad ,$peso, $cepa ,$tierra  ,$verdes ,$secas )
     {
-        $this->_db->prepare("INSERT INTO materia (dia ,maquina ,operador  ,finca ,variedad ,cepa ,tierra  ,verdes ,secas ) 
-            VALUES(:dia ,:maquina ,:operador ,:finca ,:variedad ,:cepa ,:tierra ,:verdes ,:secas)")
+        $this->_db->prepare("INSERT INTO materia (dia ,maquina ,operador  ,finca ,variedad ,cogollo,cepa ,tierra  ,verdes ,secas ) 
+            VALUES(:dia ,:maquina ,:operador ,:finca ,:variedad ,:cogollo,:cepa ,:tierra ,:verdes ,:secas)")
             ->execute(array(
                 ':dia'=>$dia,
                 ':maquina'=>$maquina,
                 ':operador'=>$operador,
                 ':finca'=>$finca,
                 ':variedad'=>$variedad,
+                ':cogollo'=>$peso,
                 ':cepa'=>$cepa,
                 ':tierra'=>$tierra,
                 ':verdes'=>$verdes,

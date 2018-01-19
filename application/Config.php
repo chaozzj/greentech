@@ -16,7 +16,7 @@ define('COMPANY_TELEPHONE','+000 0000 - 0000');
 define('COMPANY_ADDRESS','N/A');
 define('COMPANY_MAIL','info@epicalesoft.com');
 define('APP_DEVELOPER','EpicaleSoft');
-define('SESSION_TIME',1);
+define('SESSION_TIME',5);
 /*Data Base*/
 define('DB_HOST','localhost');
 define('DB_USER','root');

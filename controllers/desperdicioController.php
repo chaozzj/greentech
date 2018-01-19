@@ -37,6 +37,7 @@ class desperdicioController extends Controller
         $this->_view->operador = $this->_desperdicio->getOperadores();
         $this->_view->fincas = $this->_desperdicio->getFincas();
         $this->_view->variedad = $this->_desperdicio->getVariedades();
+        $this->_view->turnos = $this->_desperdicio->getTurnos();
         $this->_view->tagline=APP_SLOGAN;
         $this->_view->company=APP_COMPANY;
         if($this->getInt('guardar')==1)
