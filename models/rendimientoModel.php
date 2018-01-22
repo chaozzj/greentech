@@ -57,4 +57,13 @@ class rendimientoModel extends Model {
         $post = $this->_db->query("SELECT * FROM rendimiento WHERE id_post =$id");
         return $post->fetch();
     }
+    ///Metodos de Download
+    public function getFilesRendimiento(){
+        $post = $this ->_db->query("SELECT * FROM archivos_r");
+        return $post->fetchAll();
+    }
+    public function getFileRendimiento($id){
+        $post = $this ->_db->query("SELECT * FROM archivos_r WHERE id= $id");
+        return $post->fetch();
+    }
 }

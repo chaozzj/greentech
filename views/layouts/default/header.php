@@ -57,6 +57,9 @@
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
     <ul>
         <li class="active"><a href="<?php echo BASE_URL;?>"><i class="icon icon-home"></i> <span>Inicio</span></a> </li>
+        <?php if(Sessions::get('level')=='Administrador'):?>
+            <li class="active"><a href="<?php echo BASE_URL.'configuracion';?>"><i class="icon icon-cog"></i> <span>Configuraciones</span></a> </li>
+        <?php endif;?>
 <!--        <li> <a href="charts.html"><i class="icon icon-signal"></i> <span>Charts &amp; graphs</span></a> </li>-->
 <!--        <li> <a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a> </li>-->
 <!--        <li><a href="tables.html"><i class="icon icon-th"></i> <span>Tables</span></a></li>-->

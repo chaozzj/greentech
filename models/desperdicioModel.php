@@ -11,7 +11,7 @@ class desperdicioModel extends Model {
     {
         parent::__construct();
     }
-
+//Para Index
     public function getDesperdicio(){
         $post = $this ->_db->query("SELECT captura.id as idcaptura,dia,turno.nombre as turno,maquina.nombre AS maquina_nombre, operadores.nombres AS operador_nombre, fincas.nombre AS finca_nombre,
 variedad.nombre AS variedad_nombre, captura.tocones, captura.cana_larga,captura.cana_picada,captura.puntas,captura.rendimiento
@@ -24,7 +24,7 @@ INNER JOIN turno ON turno.id= captura.turno
  ORDER BY captura.id");
         return $post->fetchAll();
     }
-
+///Metodos de form Nuevo
     public function getMaquinas(){
         $post = $this->_db->query("SELECT * FROM maquina");
         return $post->fetchAll();
@@ -63,6 +63,7 @@ INNER JOIN turno ON turno.id= captura.turno
                 ':rendimiento'=>$rendimiento
             ));
     }
+///Metodos de Upload
     public function insertarArchivo($nombre ,$titulo ,$contenido ,$tipo)
     {
         $this->_db->prepare("INSERT INTO archivos (nombre ,titulo ,contenido ,tipo)  
@@ -78,6 +79,15 @@ INNER JOIN turno ON turno.id= captura.turno
     {
         $id=(int)$id;
         $post = $this->_db->query("SELECT * FROM captura WHERE id_post =$id");
+        return $post->fetch();
+    }
+///Metodos de Download
+    public function getFilesDesperdicio(){
+        $post = $this ->_db->query("SELECT * FROM archivos");
+        return $post->fetchAll();
+    }
+    public function getFileDesperdicio($id){
+        $post = $this ->_db->query("SELECT * FROM archivos WHERE id= $id");
         return $post->fetch();
     }
 }

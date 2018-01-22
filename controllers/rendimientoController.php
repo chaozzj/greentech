@@ -131,4 +131,27 @@ class rendimientoController extends Controller
         }
         $this->_view->renderizar('nuevo','rendimiento');
     }
+    public function download(){
+        Sessions::acceso('Gerente');
+        $this->_view->desperdiciofile = $this->_rendimientos->getFilesRendimiento();
+        $this->_view->titulo = APP_NAME;
+        $this->_view->tagline = APP_SLOGAN;
+        $this->_view->company = 'Rendimiento';
+        $this->_view->renderizar('download');
+    }
+    public function getfile($id){
+        Sessions::acceso('Gerente');
+
+        if(!$this->filtrarInt($id))
+        {
+            $this->redireccionar('rendimiento/download');
+        }
+
+        $filedata = $this->_rendimientos->getFileRendimiento($this->filtrarInt($id));
+        $type = $filedata['tipo'];
+        $file= $filedata['titulo'];
+        header("Content-type: $type");
+        header("Content-Disposition: attachment; filename=$file");
+        echo $filedata['contenido'];
+    }
 }

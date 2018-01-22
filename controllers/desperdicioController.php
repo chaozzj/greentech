@@ -15,7 +15,6 @@ class desperdicioController extends Controller
         parent::__construct();
         $this->_desperdicio = $this->loadModel('desperdicio');
     }
-
     public function index()
     {
         Sessions::acceso('Digitador');
@@ -55,6 +54,29 @@ class desperdicioController extends Controller
             $this->redireccionar('desperdicio');
         }
         $this->_view->renderizar('upload');
+    }
+    public function download(){
+        Sessions::acceso('Gerente');
+        $this->_view->desperdiciofile = $this->_desperdicio->getFilesDesperdicio();
+        $this->_view->titulo = APP_NAME;
+        $this->_view->tagline = APP_SLOGAN;
+        $this->_view->company = 'Desperdicio';
+        $this->_view->renderizar('download');
+    }
+    public function getfile($id){
+        Sessions::acceso('Gerente');
+
+        if(!$this->filtrarInt($id))
+        {
+            $this->redireccionar('desperdicio/download');
+        }
+
+        $filedata = $this->_desperdicio->getFileDesperdicio($this->filtrarInt($id));
+        $type = $filedata['tipo'];
+        $file= $filedata['titulo'];
+        header("Content-type: $type");
+        header("Content-Disposition: attachment; filename=$file");
+        echo $filedata['contenido'];
     }
     public function nuevo(){
         Sessions::acceso('Digitador');

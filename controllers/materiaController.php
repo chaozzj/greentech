@@ -13,7 +13,6 @@ class materiaController extends Controller
         parent::__construct();
         $this->_materias=$this->loadModel('materia');
     }
-
     public function index(){
         Sessions::acceso('Digitador');
         $this->_view->materias= $this->_materias->getMaterias();
@@ -124,5 +123,28 @@ class materiaController extends Controller
             $this->_view->renderizar('nuevo','materia');
         }
         $this->_view->renderizar('nuevo','materia');
+    }
+    public function download(){
+        Sessions::acceso('Gerente');
+        $this->_view->desperdiciofile = $this->_materias->getFilesMateria();
+        $this->_view->titulo = APP_NAME;
+        $this->_view->tagline = APP_SLOGAN;
+        $this->_view->company = 'Materia Extraña';
+        $this->_view->renderizar('download');
+    }
+    public function getfile($id){
+        Sessions::acceso('Gerente');
+
+        if(!$this->filtrarInt($id))
+        {
+            $this->redireccionar('materia/download');
+        }
+
+        $filedata = $this->_materias->getFileMateria($this->filtrarInt($id));
+        $type = $filedata['tipo'];
+        $file= $filedata['titulo'];
+        header("Content-type: $type");
+        header("Content-Disposition: attachment; filename=$file");
+        echo $filedata['contenido'];
     }
 }

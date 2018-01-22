@@ -74,4 +74,13 @@ ORDER BY materia.id");
         $post = $this->_db->query("SELECT * FROM rendimiento WHERE id_post =$id");
         return $post->fetch();
     }
+    ///Metodos de Download
+    public function getFilesMateria(){
+        $post = $this ->_db->query("SELECT * FROM archivosm");
+        return $post->fetchAll();
+    }
+    public function getFileMateria($id){
+        $post = $this ->_db->query("SELECT * FROM archivosm WHERE id= $id");
+        return $post->fetch();
+    }
 }
