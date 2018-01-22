@@ -75,7 +75,7 @@ class materiaController extends Controller
                 $this->_view->renderizar('nuevo','materia');
                 exit;
             }
-            if(!$this->getDec('mCepa'))
+            /*if(!$this->getDec('mCepa'))
             {
                 $this->_view->_error='Cepa es obligatorio.';
                 $this->_view->renderizar('nuevo','materia');
@@ -105,7 +105,7 @@ class materiaController extends Controller
                 $this->_view->_error='Raices es obligatorio';
                 $this->_view->renderizar('nuevo','materia');
                 exit;
-            }
+            }*/
 
             $this->_materias->insertarMateria(
                 $this->getInt('mDia'),
@@ -119,6 +119,8 @@ class materiaController extends Controller
                 $this->getDec('mHojas'),
                 $this->getDec('mRaices')
             );
+
+
 
             $this->_view->renderizar('nuevo','materia');
         }

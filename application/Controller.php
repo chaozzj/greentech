@@ -66,7 +66,7 @@ abstract class Controller
     {
         if(isset($_POST[$valor])&&!empty($_POST[$valor]))
         {
-            $_POST[$valor]=filter_input(INPUT_POST,$valor,FILTER_VALIDATE_FLOAT);
+            //$_POST[$valor]=filter_input(INPUT_POST,$valor,FILTER_VALIDATE_FLOAT);
             return $_POST[$valor];
         }
         return 0;

@@ -146,7 +146,7 @@ class desperdicioController extends Controller
                 $this->getDec('mRendimiento')
             );
 
-            $this->redireccionar('desperdicio');
+            $this->_view->renderizar('nuevo','desperdicio');
         }
         $this->_view->renderizar('nuevo','desperdicio');
 
