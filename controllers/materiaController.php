@@ -120,7 +120,11 @@ class materiaController extends Controller
                 $this->getDec('mRaices')
             );
 
-
+            $this->_view->datos['mPeso']=0;
+            $this->_view->datos['mCepa']=0;
+            $this->_view->datos['mTierra']=0;
+            $this->_view->datos['mHojas']=0;
+            $this->_view->datos['mRaices']=0;
 
             $this->_view->renderizar('nuevo','materia');
         }

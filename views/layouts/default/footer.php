@@ -65,5 +65,9 @@
             })
         })
     </script>
+    <script src=<?php echo $_layoutParams['ruta_js']."maruti.popover.js"?>></script>
+<?php endif;?>
+<?php if(Sessions::get('level')<='Administrador'):?>
+    <script src=<?php echo $_layoutParams['ruta_js']."maruti.popover.js"?>></script>
 <?php endif;?>
 </body></html>

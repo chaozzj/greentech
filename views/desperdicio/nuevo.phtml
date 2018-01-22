@@ -80,7 +80,7 @@
                                 <?php for($i=0;$i<count($this->fincas);$i++):?>
                                     <option  value="<?php echo $this->fincas[$i]['id'];?>"
                                         <?php if(isset($this->datos['mFinca'])){
-                                            if($this->fincas[$i]['id'] == $this->datos['mFincas']) {
+                                            if($this->fincas[$i]['id'] == $this->datos['mFinca']) {
                                                 echo "selected='selected'";
                                             }
                                         };?>>
@@ -93,10 +93,16 @@
                 <div class="control-group">
                     <label class="control-label">Variedad</label>
                     <div class="controls">
-                        <select id="mFinca" name="mVariedad">
+                        <select id="mVariedad" name="mVariedad">
                             <?php if(isset($this->variedad)&& count($this->variedad)):?>
                                 <?php for($i=0;$i<count($this->variedad);$i++):?>
-                                    <option  value="<?php echo $this->variedad[$i]['id'];?>"><?php echo $this->variedad[$i]['nombre'];?></option>
+                                    <option  value="<?php echo $this->variedad[$i]['id'];?>"
+                                        <?php if(isset($this->datos['mVariedad'])){
+                                            if($this->fincas[$i]['id'] == $this->datos['mVariedad']) {
+                                                echo "selected='selected'";
+                                            }
+                                        };?>>
+                                        <?php echo $this->variedad[$i]['nombre'];?></option>
                                 <?php endfor;?>
                             <?php endif;?>
                         </select>
@@ -112,7 +118,7 @@
                 <div class="control-group">
                     <label class="control-label">Caña Larga</label>
                     <div class="controls">
-                        <input type="number" min="0" step="0.01" name="mCañaL" value="<?php if (isset($this->datos['mCañal'])) echo $this->datos['mCañal']; ?>"/>
+                        <input type="number" min="0" step="0.01" name="mCañaL" value="<?php if (isset($this->datos['mCañaL'])) echo $this->datos['mCañaL']; ?>"/>
 
                     </div>
                 </div>
@@ -141,6 +147,24 @@
                     <button type="button" class="btn btn-danger">Cancelar</button>
                 </div>
             </form>
+        </div>
+        <?php echo $this->mGuardar;?>
+        <?php if($this->mGuardar>0):?>
+            <!--<a id="mguardar" href="#myAlert" data-toggle="modal" class="btn btn-warning"></a>-->
+            <script type="text/javascript" >
+                $("myAlert").show();
+            </script>
+
+        <?php endif;?>
+        <div id="myAlert" class="modal hide">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">×</button>
+                <h3>Datos Almacenados</h3>
+            </div>
+            <div class="modal-body">
+                <p>Datos almacenados satisfactoriamente.</p>
+            </div>
+            <div class="modal-footer"> <a data-dismiss="modal" class="btn btn-primary" href="#">Aceptar</a></div>
         </div>
     </div>
 </div>

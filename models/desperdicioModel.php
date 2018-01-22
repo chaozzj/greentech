@@ -48,7 +48,7 @@ INNER JOIN turno ON turno.id= captura.turno
     public function insertarDesperdicio($dia ,$maquina ,$operador ,$turno ,$finca ,$variedad ,$tocones ,$cana_larga, $cana_picada, $puntas, $rendimiento)
     {
         $this->_db->prepare("INSERT INTO captura (dia ,maquina ,operador ,turno ,finca ,variedad ,tocones ,cana_larga ,cana_picada ,puntas ,rendimiento ) 
-            VALUES(:dia ,:maquina ,:operador ,:turno ,:finca ,:variedad ,:tocones ,:cana_larga ,:cana_picada ,:puntas ,:rendimiento)")
+VALUES(:dia ,:maquina ,:operador ,:turno ,:finca ,:variedad ,:tocones ,:cana_larga ,:cana_picada ,:puntas ,:rendimiento)")
             ->execute(array(
                 ':dia'=>$dia,
                 ':maquina'=>$maquina,

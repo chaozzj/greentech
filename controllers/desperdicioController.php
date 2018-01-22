@@ -91,6 +91,7 @@ class desperdicioController extends Controller
         $this->_view->turnos = $this->_desperdicio->getTurnos();
         $this->_view->tagline=APP_SLOGAN;
         $this->_view->company=APP_COMPANY;
+        $this->_view->mGuardar=false;
         if($this->getInt('guardar')==1)
         {
             $this->_view->datos=$_POST;
@@ -100,7 +101,7 @@ class desperdicioController extends Controller
                 $this->_view->renderizar('nuevo','desperdicio');
                 exit;
             }
-            if(!$this->getDec('mTocones'))
+            /*if(!$this->getDec('mTocones'))
             {
                 $this->_view->_error='Toccones es obligatorio.';
                 $this->_view->renderizar('nuevo','desperdicio');
@@ -131,7 +132,7 @@ class desperdicioController extends Controller
                 $this->_view->_error='Rendimiento es obligatorio';
                 $this->_view->renderizar('nuevo','desperdicio');
                 exit;
-            }
+            }*/
             $this->_desperdicio->insertarDesperdicio(
                 $this->getInt('mDia'),
                 $this->getInt('mMaquina'),
@@ -146,6 +147,12 @@ class desperdicioController extends Controller
                 $this->getDec('mRendimiento')
             );
 
+            $this->_view->datos['mTocones']=0;
+            $this->_view->datos['mCañaL']=0;
+            $this->_view->datos['mCañaPic']=0;
+            $this->_view->datos['mPuntas']=0;
+            $this->_view->datos['mRendimiento']=0;
+            $this->_view->mGuardar=true;
             $this->_view->renderizar('nuevo','desperdicio');
         }
         $this->_view->renderizar('nuevo','desperdicio');
