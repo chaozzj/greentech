@@ -1,0 +1,14 @@
+<div class="container-fluid" style="background-image: url("public/img/background.JPG)">
+<div class="row-fluid">
+    <h1><?php if($this->mensaje) echo $this->mensaje;?></h1>
+    <div class="quick-actions_homepage">
+        <ul class="quick-actions">
+            <?php if(!Sessions::get('autenticado')):?>
+
+                <li class=""><a title="" href="<?php echo BASE_URL. 'login';?>"><i class="icon icon-user"></i> <span class="text">Iniciar Sesión</span></a></li>
+
+            <?php endif;?>
+        </ul>
+    </div>
+</div>
+</div>

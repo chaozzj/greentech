@@ -62,6 +62,15 @@ abstract class Controller
         }
         return 0;
     }
+    protected function getDec($valor)
+    {
+        if(isset($_POST[$valor])&&!empty($_POST[$valor]))
+        {
+            //$_POST[$valor]=filter_input(INPUT_POST,$valor,FILTER_VALIDATE_FLOAT);
+            return $_POST[$valor];
+        }
+        return 0;
+    }
     /*Funciones por metodo GET*/
     protected  function filtrarInt($int)
     {
@@ -85,6 +94,27 @@ abstract class Controller
         {
             header('location:'.BASE_URL);
             exit;
+        }
+    }
+
+    protected function getSql($clave){
+        $con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+        if(isset($_POST[$clave]) && !empty($_POST[$clave])){
+            $_POST[$clave]=strip_tags($_POST[$clave]);
+
+            if(!get_magic_quotes_gpc()){
+                $_POST[$clave]= mysqli_real_escape_string($con,$_POST[$clave]);
+            }
+
+            return trim($_POST[$clave]);
+        }
+    }
+
+    protected function getAlphaNum($clave){
+        if(isset($_POST[$clave]) && !empty($_POST[$clave])){
+            //$_POST[$clave]=(string) preg_replace('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/','',$_POST[$clave]);
+            //$_POST[$clave]=(string) preg_replace('/[^A-Z0-9_]/i','',$_POST[$clave]);
+            return trim($_POST[$clave]);
         }
     }
 }

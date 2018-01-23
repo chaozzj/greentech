@@ -1,0 +1,72 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span6">
+            <div class="widget-box">
+                <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                    <h5>Agregar Rendimiento</h5>
+                </div>
+                <div class="widget-content nopadding">
+                    <form id="frmAddRendimiento" class="form-horizontal" method="post"  action="<?php echo BASE_URL?>rendimiento/nuevo">
+                        <input type="hidden"name="guardar" value="1"/>
+                        <div class="control-group">
+                            <label class="control-label">Dia</label>
+                            <div class="controls">
+                                <select id="mDia" name="mDia">
+                                    <?php for($i=1;$i<126;$i++):?>
+                                        <option  value="<?php echo $i;?>"><?php echo $i;?></option>
+                                    <?php endfor;?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Cosechando</label>
+                            <div class="controls">
+                                <input type="number" min="0" step="1" name="mCosechado" id="mCosechado" value="<?php if (isset($this->datos['mCosechado'])) echo $this->datos['mCosechado']; ?>"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Girando</label>
+                            <div class="controls">
+                                <input type="number" min="0" step="1" name="mGirando" id="mGirando" value="<?php if (isset($this->datos['mGirando'])) echo $this->datos['mGirando']; ?>" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Sin Volquete</label>
+                            <div class="controls">
+                                <input type="number" min="0" step="1" name="mVolquete" id="mVolquete" value="<?php if (isset($this->datos['mVolquete'])) echo $this->datos['mVolquete']; ?>"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Transporte</label>
+                            <div class="controls">
+                                <input type="number" min="0" step="1" name="mTransporte" id="mTransporte" value="<?php if (isset($this->datos['mTransporte'])) echo $this->datos['mTransporte']; ?>" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Reparación</label>
+                            <div class="controls">
+                                <input type="number" min="0" step="1" name="mReparacion" id="mReparacion" value="<?php if (isset($this->datos['mReparacion'])) echo $this->datos['mReparacion']; ?>"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Revisión</label>
+                            <div class="controls">
+                                <input type="number" min="0" step="1" name="mRevision" id="mRevision" value="<?php if (isset($this->datos['mRevision'])) echo $this->datos['mRevision']; ?>"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Distraído</label>
+                            <div class="controls">
+                                <input type="number" min="0" step="1" name="mDistraido" id="mDistraido" value="<?php if (isset($this->datos['mDistraido'])) echo $this->datos['mDistraido']; ?>"/>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">Ingresar Datos</button>
+                            <button type="button" class="btn btn-danger">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

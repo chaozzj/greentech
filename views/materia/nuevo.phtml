@@ -1,0 +1,131 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span6">
+            <div class="widget-box">
+                <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                    <h5>Agregar Materia Extraña</h5>
+                </div>
+                <div class="widget-content nopadding">
+                    <form id="frmAddMateria" class="form-horizontal" method="post"  action="<?php echo BASE_URL?>materia/nuevo">
+                        <input type="hidden"name="guardar" value="1"/>
+                        <div class="control-group">
+                            <label class="control-label">Dia</label>
+                            <div class="controls">
+                                <select id="mDia" name="mDia">
+                                    <?php for($i=1;$i<126;$i++):?>
+                                        <option  value="<?php echo $i;?>"><?php echo $i;?></option>
+                                    <?php endfor;?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Máquina</label>
+                            <div class="controls">
+                                <select id="mMaquina" name="mMaquina" value="<?php if (isset($this->datos['mMaquina'])) echo $this->datos['mMaquina'];?>">
+                                    <?php if(isset($this->maquinas)&& count($this->maquinas)):?>
+                                        <?php for($i=0;$i<count($this->maquinas);$i++):?>
+                                            <option  value="<?php echo $this->maquinas[$i]['id'];?>"
+                                                <?php if(isset($this->datos['mMaquina'])){
+                                                    if($this->variedad[$i]['id'] == $this->datos['mMaquina']) {
+                                                        echo "selected='selected'";
+                                                    }
+                                                };?>
+                                            ><?php echo $this->maquinas[$i]['nombre'];?></option>
+                                        <?php endfor;?>
+                                    <?php endif;?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Operador</label>
+                            <div class="controls">
+                                <select id="mOperador" name="mOperador" value="<?php if (isset($this->datos['mOperador'])) echo $this->datos['mOperador'];?>">
+                                    <?php if(isset($this->operador)&& count($this->operador)):?>
+                                        <?php for($i=0;$i<count($this->operador);$i++):?>
+                                            <option  value="<?php echo $this->operador[$i]['int'];?>"
+                                                <?php if(isset($this->datos['mOperador'])){
+                                                    if($this->variedad[$i]['id'] == $this->datos['mOperador']) {
+                                                        echo "selected='selected'";
+                                                    }
+                                                };?>
+                                            ><?php echo $this->operador[$i]['nombres'];?></option>
+                                        <?php endfor;?>
+                                    <?php endif;?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Finca</label>
+                            <div class="controls">
+                                <select id="mFinca" name="mFinca" value="<?php if (isset($this->datos['mFinca'])) echo $this->datos['mFinca'];?>">
+                                    <?php if(isset($this->fincas)&& count($this->fincas)):?>
+                                        <?php for($i=0;$i<count($this->fincas);$i++):?>
+                                            <option  value="<?php echo $this->fincas[$i]['id'];?>"
+                                                <?php if(isset($this->datos['mFinca'])){
+                                                    if($this->variedad[$i]['id'] == $this->datos['mFinca']) {
+                                                        echo "selected='selected'";
+                                                    }
+                                                };?>
+                                            ><?php echo $this->fincas[$i]['nombre'];?></option>
+                                        <?php endfor;?>
+                                    <?php endif;?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Variedad</label>
+                            <div class="controls">
+                                <select id="mVariedad" name="mVariedad">
+                                    <?php if(isset($this->variedad)&& count($this->variedad)):?>
+                                        <?php for($i=0;$i<count($this->variedad);$i++):?>
+                                            <option  value="<?php echo $this->variedad[$i]['id'];?>"
+                                                <?php if(isset($this->datos['mVariedad'])){
+                                                    if($this->variedad[$i]['id'] == $this->datos['mVariedad']) {
+                                                        echo "selected='selected'";
+                                                    }
+                                                };?>><?php echo $this->variedad[$i]['nombre'];?></option>
+                                        <?php endfor;?>
+                                    <?php endif;?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Peso</label>
+                            <div class="controls">
+                                <input type="number" min="0" step="0.01" name="mPeso" id="mPeso" value="<?php if (isset($this->datos['mPeso'])) echo $this->datos['mPeso']; ?>"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Cepa</label>
+                            <div class="controls">
+                                <input type="number" min="0" step="0.01" name="mCepa" id="mCepa" value="<?php if (isset($this->datos['mCepa'])) echo $this->datos['mCepa']; ?>" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Hojas</label>
+                            <div class="controls">
+                                <input type="number" min="0" step="0.01" name="mHojas" id="mHojas" value="<?php if (isset($this->datos['mHojas'])) echo $this->datos['mHojas']; ?>"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Tierra</label>
+                            <div class="controls">
+                                <input type="number" min="0" step="0.01" name="mTierra" id="mTierra" value="<?php if (isset($this->datos['mTierra'])) echo $this->datos['mTierra']; ?>" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Cogollo</label>
+                            <div class="controls">
+                                <input type="number" min="0" step="0.01" name="mRaices" id="mRaices" value="<?php if (isset($this->datos['mRaices'])) echo $this->datos['mRaices']; ?>"/>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">Ingresar Datos</button>
+                            <button type="button" class="btn btn-danger">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

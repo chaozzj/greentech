@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span6">
+            <div class="widget-box">
+                <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                    <h5>Subir Archivo Desperdicio</h5>
+                </div>
+                <div class="widget-content nopadding">
+                    <form id="frmAddRendimiento" class="form-horizontal" method="post"  action="<?php echo BASE_URL?>desperdicio/upload" enctype="multipart/form-data">
+                        <input type="hidden"name="guardar" value="1"/>
+                        <div class="control-group">
+                            <label class="control-label">Titulo</label>
+                            <div class="controls">
+                                <input type="text" name="mTitulo"id="mTitulo" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Archivo</label>
+                            <div class="controls">
+                                <input type="file" name="mArchivo"id="mArchivo" size="30" />
+                                <p>Tamaño máximo <?php echo  ini_get('upload_max_filesize');?></p>
+                                <p style="color: red;"><?php echo $this->_error;?></p>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">Ingresar Datos</button>
+                            <button type="button" class="btn btn-danger">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

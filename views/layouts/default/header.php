@@ -5,21 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <!-- LOAD JQUERY LIBRARY -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
     <!-- Loading Bootstrap -->
     <link href="<?php echo $_layoutParams['ruta_css']?>bootstrap.min.css" rel="stylesheet"/>
     <link href="<?php echo $_layoutParams['ruta_css']?>bootstrap-responsive.min.css" rel="stylesheet"/>
     <!-- Loading Template CSS -->
-    <link href="<?php echo $_layoutParams['ruta_css']?>fullcalendar.css" rel="stylesheet" />
+
+    <link href="<?php echo $_layoutParams['ruta_css']?>datepicker.css" rel="stylesheet" />
+    <link href="<?php echo $_layoutParams['ruta_css']?>uniform.css" rel="stylesheet" />
+    <link href="<?php echo $_layoutParams['ruta_css']?>select2.css" rel="stylesheet" />
     <link href="<?php echo $_layoutParams['ruta_css']?>maruti-style.css" rel="stylesheet" />
     <link href="<?php echo $_layoutParams['ruta_css']?>maruti-media.css" rel="stylesheet" class="skin-color"/>
 
-
-   <!-- LOADING FONTS AND ICONS -->
-<!--    <link href="--><?php ///*echo $_layoutParams['ruta_revs_fonts']*/?><!--pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" type="text/css"/>-->
-<!--    <link href="--><?php ///*echo $_layoutParams['ruta_revs_fonts']*/?><!--font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>-->
-
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src=<?php echo $_layoutParams['ruta_js']."jquery.table2excel.min.js"?>></script>
     <!-- Font Favicon -->
     <!--<link rel="shortcut icon" href="images/favicon.ico">-->
 
@@ -28,7 +27,11 @@
     <script src=<?php echo $_layoutParams['ruta_js']."html5shiv.js;"?></script>
     <script src=<?php echo $_layoutParams['ruta_js']."respond.min.js;"?></script>
     <![endif]-->
-
+    <?php if(isset($_layoutParams['JS']) && count($_layoutParams['JS'])):?>
+        <?php for($i=0;$i<count($_layoutParams['JS']);$i++):?>
+            <script src="<?php echo $_layoutParams['JS'][$i];?>" type="text/javascript"></script>
+        <?php endfor;?>
+    <?php endif;?>
     <!--headerIncludes-->
 </head>
 <body>
@@ -42,7 +45,11 @@
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
     <ul class="nav">
-        <li class=""><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Salir</span></a></li>
+        <?php if(!Sessions::get('autenticado')):?>
+            <li class=""><a title="" href="<?php echo BASE_URL. 'login';?>"><i class="icon icon-user"></i> <span class="text">Iniciar Sesión</span></a></li>
+        <?php else:?>
+        <li class=""><a title="" href="<?php echo BASE_URL. 'login/logout';?>"><i class="icon icon-share-alt"></i> <span class="text">Salir</span></a></li>
+        <?php endif;?>
     </ul>
 </div>
 <!--close-top-Header-menu-->
@@ -50,6 +57,9 @@
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
     <ul>
         <li class="active"><a href="<?php echo BASE_URL;?>"><i class="icon icon-home"></i> <span>Inicio</span></a> </li>
+        <?php if(Sessions::get('level')=='Administrador'):?>
+            <li class="active"><a href="<?php echo BASE_URL.'configuracion';?>"><i class="icon icon-cog"></i> <span>Configuraciones</span></a> </li>
+        <?php endif;?>
 <!--        <li> <a href="charts.html"><i class="icon icon-signal"></i> <span>Charts &amp; graphs</span></a> </li>-->
 <!--        <li> <a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a> </li>-->
 <!--        <li><a href="tables.html"><i class="icon icon-th"></i> <span>Tables</span></a></li>-->
@@ -79,10 +89,12 @@
     </div>
     <div class="container-fluid">
         <div class="quick-actions_homepage">
-            <ul class="quick-actions">
+            <?php if(Sessions::get('autenticado')):?>
+                <ul class="quick-actions">
                 <li> <a href="<?php echo BASE_URL.'rendimiento'?>"> <i class="icon-dashboard"></i> Rendimiento </a> </li>
-                <li> <a href="#"> <i class="icon-graph"></i> Desperdicio de Caña</a> </li>
-                <li> <a href="#"> <i class="icon-book"></i> Materia Extraña </a> </li>
+                <li> <a href="<?php echo BASE_URL.'desperdicio'?>"> <i class="icon-graph"></i> Desperdicio de Caña</a> </li>
+                <li> <a href="<?php echo BASE_URL.'materia'?>"> <i class="icon-book"></i> Materia Extraña </a> </li>
             </ul>
+            <?php endif;?>
         </div>
 <!--end header -->

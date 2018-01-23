@@ -13,6 +13,7 @@ class indexController extends Controller
     }
 
     public function index(){
+        Sessions::acceso('Digitador');
         $this->_view->titulo=APP_NAME;
         $this->_view->tagline=APP_SLOGAN;
         $this->_view->company=APP_COMPANY;

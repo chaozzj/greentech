@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span6">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon"><i class="icon-th"></i></span>
+                    <h5>Desperdicios de Caña</h5>
+                    <div class="buttons">
+
+                    </div>
+                </div>
+                <?php if(isset($this->desperdiciofile)&& count($this->desperdiciofile)):?>
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered data-table">
+                        <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Nombre</th>
+                            <th>Descargar</th>
+                        </tr>
+                        </thead>
+                        <?php for($i=0;$i<count($this->desperdiciofile);$i++):?>
+                            <tbody>
+                            <tr class="gradeX">
+                                <td><?php echo $this->desperdiciofile[$i]['titulo'];?></td>
+                                <td><?php echo $this->desperdiciofile[$i]['nombre'];?></td>
+                                <td><a href="<?php echo BASE_URL.'desperdicio/getfile/'.$this->desperdiciofile[$i]['id'] ;?>">Descargar</a> </td>
+                            </tr>
+                            </tbody>
+                        <?php endfor;?>
+                    </table>
+                    <?php else:?>
+                        <h5>No hay datos para mostrar.</h5>
+                    <?php endif;?>
+                </div>
+            </div>
+        </div>
+    </div>

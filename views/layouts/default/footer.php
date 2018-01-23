@@ -35,16 +35,39 @@
 
 
 <!-- Load JS here for greater good =============================-->
-<script src=<?php echo $_layoutParams['ruta_js']."excanvas.min.js"?>></script>
+
 <script src=<?php echo $_layoutParams['ruta_js']."jquery.min.js"?>></script>
 <script src=<?php echo $_layoutParams['ruta_js']."jquery.ui.custom.js"?>></script>
+<script src=<?php echo $_layoutParams['ruta_js']."jquery.validate.js"?>></script>
+<script src=<?php echo $_layoutParams['ruta_js']."jquery.dataTables.min.js"?>></script>
 <script src=<?php echo $_layoutParams['ruta_js']."bootstrap.min.js"?>></script>
-<script src=<?php echo $_layoutParams['ruta_js']."jquery.flot.min.js"?>></script>
-<script src=<?php echo $_layoutParams['ruta_js']."jquery.flot.resize.min.js"?>></script>
-<script src=<?php echo $_layoutParams['ruta_js']."jquery.peity.min.js"?>></script>
-<script src=<?php echo $_layoutParams['ruta_js']."fullcalendar.min.js"?>></script>
+<script src=<?php echo $_layoutParams['ruta_js']."jquery.uniform.js"?>></script>
 <script src=<?php echo $_layoutParams['ruta_js']."maruti.js"?>></script>
-<script src=<?php echo $_layoutParams['ruta_js']."maruti.dashboard.js"?>></script>
-<script src=<?php echo $_layoutParams['ruta_js']."maruti.chat.js"?>></script>
+<script src=<?php echo $_layoutParams['ruta_js']."select2.min.js"?>></script>
+<script src=<?php echo $_layoutParams['ruta_js']."maruti.form_common.js"?>></script>
+<!--<script src=<?php echo $_layoutParams['ruta_js']."maruti.tables.js"?>></script>-->
+<script src=<?php echo $_layoutParams['ruta_js']."bootstrap-datepicker.js"?>></script>
+<script src=<?php echo $_layoutParams['ruta_js']."bootstrap-colorpicker.js"?>></script>
+<script src=<?php echo $_layoutParams['ruta_js']."jquery.table2excel.js"?>></script>
 
+
+<?php if(Sessions::get('level')=='Administrador'):?>
+    <script type="text/javascript">
+        $('#btnexport').click(function (){
+            $('.table').table2excel({
+                exclude: ".noExl",
+                name:'GreenTech export',
+                filename: "GreenTech",
+                fileext: ".xls",
+                exclude_img: true,
+                exclude_links: true,
+                exclude_inputs: true
+            })
+        })
+    </script>
+    <script src=<?php echo $_layoutParams['ruta_js']."maruti.popover.js"?>></script>
+<?php endif;?>
+<?php if(Sessions::get('level')<='Administrador'):?>
+    <script src=<?php echo $_layoutParams['ruta_js']."maruti.popover.js"?>></script>
+<?php endif;?>
 </body></html>

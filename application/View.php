@@ -8,10 +8,12 @@
 class View
 {
     private $_controlador;
+    private $_js;
 
     public function __construct(Request $peticion)
     {
         $this->_controlador = $peticion->getControlador();
+        $this->_js=array();
     }
 
     public function renderizar($vista, $item = false)
@@ -32,6 +34,12 @@ class View
                 'enlace'=> BASE_URL. 'account')
             );
 
+        $js=array();
+
+        if(count($this->_js)){
+            $js=$this->_js;
+        }
+
         $_layoutParams = array(
             'ruta_css' => BASE_URL . 'views/layouts/'. DEFAULT_LAYOUT . '/css/',
             'ruta_js' => BASE_URL . 'views/layouts/'. DEFAULT_LAYOUT . '/js/',
@@ -40,7 +48,8 @@ class View
             'ruta_revs_fonts' => BASE_URL . 'views/layouts/'. DEFAULT_LAYOUT . '/revs/fonts/',
             'ruta_revs_js' => BASE_URL . 'views/layouts/'. DEFAULT_LAYOUT . '/revs/js/',
             'ruta_revs_assets' => BASE_URL . 'views/layouts/'. DEFAULT_LAYOUT . '/revs/assets/',
-            'menu'=>$menu
+            'menu'=>$menu,
+            'JS'=> $js
         );
 
         $rutaView = ROOT.'views'.DS.$this->_controlador.DS.$vista.'.phtml';

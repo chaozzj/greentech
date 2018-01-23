@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="widget-content">
+                <img src="<?php echo $_layoutParams['ruta_img']?>traube_logo.jpg" alt="" width="84%" >
+            </div>
+        </div>
+        <div class="span3">
+            <div class="widget-content">
+                <img src="<?php echo $_layoutParams['ruta_img']?>john_deere_logo.jpg" alt="" width="60%" >
+            </div>
+        </div>
+        <div class="span6">
+            <div class="widget-box">
+                <div class="widget-title"> <span class="icon"> <i class="icon-user"></i> </span>
+                    <h5>Inicio de Sesión</h5>
+                </div>
+                <div class="widget-content nopadding">
+                    <form id="frmLogin" class="form-horizontal" method="post"  action="">
+                        <input type="hidden" name="enviar" value="1"/>
+                        <div class="control-group">
+                            <label class="control-label">Usuario</label>
+                            <div class="controls">
+                                <input type="text" name="mUsuario" id="mUsuario" value="<?php if (isset($this->datos)) echo $this->datos['mUsuario']; ?>"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Contraseña</label>
+                            <div class="controls">
+                                <input type="password" name="mPassword" id="mPassword" value="<?php if (isset($this->datos)) echo $this->datos['mPassword']; ?>"/>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <p style="color: red;"><?php echo $this->_error;?></p>
+                            <button type="submit" class="btn btn-success">Ingresar</button>
+                            <button type="button" class="btn btn-danger">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
